@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="654df4d9-1df3-4e7e-a5c7-7b743e894371">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="DATA" class="java.util.Date"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version11\\JavaApplication7\\src\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="k" class="java.lang.String"/>
+	<field name="hd" class="java.lang.String"/>
+	<field name="hc" class="java.lang.String"/>
+	<field name="hs" class="java.lang.String"/>
+	<field name="filtersBeanList" class="java.util.List"/>
+	<field name="sRDataSource" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="203" y="17" width="143" height="51" uuid="5a847ad2-8952-4d6a-bada-a2c0ce56324d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="36" pdfFontName="Helvetica" pdfEncoding="Cp1251" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="dd/MM/yy">
+				<reportElement x="203" y="15" width="143" height="20" uuid="78404f66-1ce2-488c-9526-291fbed20499"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="0" width="550" height="61" uuid="e411c54f-0454-4cf2-8aa4-3f508a6297af"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Absolute calibration of X-ray semiconductor detectors
+against synchrotron radiation]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="607" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="97" y="56" width="66" height="20" uuid="421306fe-218a-404b-8624-cff0dfe6de7c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{k}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="97" y="89" width="66" height="20" uuid="42881af3-55c9-450d-8b94-db17d74c5344"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hd}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0000">
+				<reportElement mode="Opaque" x="346" y="56" width="66" height="20" uuid="eba19c3d-c479-430d-aa76-8ce4ffaea318"/>
+				<textElement markup="styled">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="346" y="89" width="66" height="20" uuid="9540f1c7-fb13-486c-ad1e-5cf44cea2d74"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hs}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="8" width="554" height="20" backcolor="#FFFFCC" uuid="e311f68a-bcec-4d19-ac66-a3339ba23d5c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Calibration results]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="56" width="25" height="20" uuid="71c0c224-0a47-408a-835e-451414df6c3b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[k=]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="89" width="46" height="20" uuid="a09b2cfd-bac0-4f2e-afb9-448af7143505"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[hd=]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="56" width="37" height="20" uuid="88e8c731-c9be-4d6a-9d9c-569129499f4e"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[hc=]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="89" width="34" height="20" uuid="a620c7bc-93ff-4afb-a68e-ce3440c0aba9"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[hs=]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="1" y="192" width="550" height="400" uuid="927033ba-750f-4d38-a622-e2001d134c9a"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource
+                 ($F{filtersBeanList})]]></dataSourceExpression>
+				<subreportExpression><![CDATA["C:\\Program Files\\Detector\\bundles\\filters.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="133" width="554" height="20" backcolor="#FFFFCC" uuid="9d78948b-e994-4ef5-8f2f-c6b1403c5afd"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Synchrotron radiation's source]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="185" width="554" height="3" backcolor="#000000" uuid="7f82dcc0-ca6d-440c-b743-272166c355a6"/>
+				<graphicElement>
+					<pen lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement mode="Opaque" x="1" y="165" width="550" height="20" uuid="7d848391-8079-45e4-bd95-cb552ab58972"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SR data file "+$F{sRDataSource}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="32" width="554" height="3" backcolor="#000000" uuid="5a982c34-30b6-4ac4-bccc-7460d76e5f82"/>
+				<graphicElement>
+					<pen lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
