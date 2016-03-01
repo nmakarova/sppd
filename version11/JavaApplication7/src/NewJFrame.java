@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import callibration_model.Controller;
 import java.io.*;
 import javax.swing.JOptionPane;
-import java.awt.Color; 
-import java.awt.Font;
 import java.util.Locale;
 import javax.swing.*;
 import java.math.*;
@@ -14,7 +13,6 @@ import java.util.Random;
 import java.awt.datatransfer.*;
 import java.awt.Toolkit;
 import java.util.ArrayList;
-import java.util.Date;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
@@ -23,22 +21,13 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.util.HashMap; 
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager; 
-import net.sf.jasperreports.engine.JasperPrint; 
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource; 
 import net.sf.jasperreports.swing.JRViewer; 
 import net.sf.jasperreports.engine.JRException; 
 import net.sf.jasperreports.engine.JasperCompileManager; 
-import net.sf.jasperreports.engine.JasperExportManager; 
 import net.sf.jasperreports.engine.JasperFillManager; 
 import net.sf.jasperreports.engine.JasperPrint; 
 import net.sf.jasperreports.engine.JasperReport; 
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource; 
-import net.sf.jasperreports.engine.design.JasperDesign; 
-import net.sf.jasperreports.engine.xml.JRXmlLoader; 
 /**
  *
  * @author 1
@@ -145,6 +134,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -177,6 +167,9 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -624,26 +617,38 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton10.setText("Считать данные");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(22, 22, 22)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton7)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jButton8))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton8)))
+                        .addContainerGap()
+                        .addComponent(jButton10)))
                 .addContainerGap(2181, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -651,7 +656,9 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
+                        .addContainerGap()
+                        .addComponent(jButton10)
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -957,6 +964,22 @@ public class NewJFrame extends javax.swing.JFrame {
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("Детектор");
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("Детектор");
+        jMenu3.add(jRadioButtonMenuItem1);
+
+        jMenuItem2.setText("Создать новый");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -977,7 +1000,40 @@ public class NewJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-            
+    public void createFilterView(){
+      jButton2.setVisible(false);
+      jPanel4.removeAll();
+      jPanel4.revalidate();
+      int x=jComboBox1.getSelectedIndex();
+      if (x==0){
+      controller.setCoating(true);    
+      }
+      else{
+       controller.setCoating(false);      
+      }
+      Object sp=jSpinner1.getValue();
+      count_of_filters =Integer.parseInt(sp.toString() );
+      FilterViewController filterViewController=new FilterViewController();
+      filterViewController.createFilerView(x,count_of_filters, jPanel4, file);   
+      String [] nameOfLayer;
+      double [] thickness;
+      double [] expValue=new double[count_of_filters];
+      expValue=filterViewController.createExpValue(x, count_of_filters);
+      if (x==0){
+          nameOfLayer=new String [2*count_of_filters];
+          thickness=new double [2*count_of_filters];
+          nameOfLayer=filterViewController.createNameBase(x, count_of_filters);
+          thickness=filterViewController.createThickness(x, count_of_filters);
+      
+    } else{
+    nameOfLayer=new String [count_of_filters];
+          thickness=new double [count_of_filters];
+          nameOfLayer=filterViewController.createNameBase(x, count_of_filters);
+          thickness=filterViewController.createThickness(x, count_of_filters);
+}
+      
+    }
+         
     public double nevjazka (double [] I1, double [] I0)  {
          double T0=0;
           T0=0;
@@ -1218,6 +1274,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
  
 //создаем источник тока
+        controller.createSource(jTextField1.getText());
 DataFromFile source=new DataFromFile(jTextField1.getText()); 
   //DataFromFile source=new DataFromFile("C:\\Users\\1\\Desktop\\ияф\\filter\\data.txt"); 
 //создаем объект детектор
@@ -1518,17 +1575,8 @@ DataFromFile source=new DataFromFile(jTextField1.getText());
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      createFilterView();
       
-        jButton2.setVisible(false);
-       jPanel4.removeAll();
-      jPanel4.revalidate();
-      int x=jComboBox1.getSelectedIndex();
-      System.out.print(x);
-        Object sp=jSpinner1.getValue();
-       count_of_filters =Integer.parseInt(sp.toString() );
-       FilterViewController filterViewController=new FilterViewController();
-       filterViewController.createFilerView(x,count_of_filters, jPanel4, file);
-       
        /*
       //  count_of_filters=4;
         //массив панелей для фильтров
@@ -2095,6 +2143,24 @@ reportFrame.setVisible(true);
         ButtonControler bc=new ButtonControler();
         bc.createButton(jCheckBox5.isSelected(), jPanel10);
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+       String [] baseName=new String [count_of_filters];
+       String [] sprayName=new String [count_of_filters];
+       double [] baseThick=new double[count_of_filters];
+       double [] sprayThick=new double[count_of_filters];
+       double [] expValue=new double[count_of_filters];
+       
+      //FilterViewController dataset= new FilterViewController();
+     // baseName=dataset.createNameBase();
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        DetectorFrame detectorFrame=new DetectorFrame();
+        detectorFrame.setVisible(true);
+        detectorFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        DetectorNew detector=detectorFrame.createDetector();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -2129,7 +2195,8 @@ reportFrame.setVisible(true);
             new NewJFrame().setVisible(true);
         }
                 
-        );
+       );
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2138,6 +2205,7 @@ reportFrame.setVisible(true);
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -2186,8 +2254,10 @@ reportFrame.setVisible(true);
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -2206,6 +2276,7 @@ reportFrame.setVisible(true);
     private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JRadioButton jRadioButton7;
     private javax.swing.JRadioButton jRadioButton8;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     protected static javax.swing.JSpinner jSpinner1;
@@ -2257,4 +2328,5 @@ JLabel [] label6;
 //Массив надписей "Фильтр 1/2/3/..."
 JLabel [] label7;
 File file;
+Controller controller;
 }

@@ -14,7 +14,7 @@ import java.io.RandomAccessFile;
  *
  * @author 1
  */
-public abstract class Material extends DataFromFile {
+public class Material extends DataFromFile {
 
     public Material(String Name_of_file) {
         super(Name_of_file);

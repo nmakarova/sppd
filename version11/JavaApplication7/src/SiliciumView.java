@@ -21,11 +21,12 @@ import javax.swing.SwingConstants;
  *
  * @author 1
  */
-public class SiliciumView {
+public class SiliciumView implements FilterView{
     JTextField [] field1;
     JTextField [] field2;
     JTextField [] field3;
             
+    @Override
    public void createView(int countOfFilers, JPanel viewPanel, File file){
 
        JPanel [] jPan_filter=new JPanel[countOfFilers];
@@ -142,5 +143,29 @@ for (int i=0; i<countOfFilers; i++){
                     .addComponent(label3[i+countOfFilers])));
             viewPanel.add(jPan_filter[i]);
         }
-   } 
+   }
+   
+   public String [] createCoutingBase(int countOfFilters){
+       String [] coutingBase=new String [2*countOfFilters];
+       for (int i=0; i<2*countOfFilters; i++){
+           coutingBase[i]=new String(field1[i].getText());
+       }
+       return coutingBase;
+   }
+    @Override
+   public double [] createBaseThickness (int countOfFilters){
+       double [] baseThickness=new double [2*countOfFilters];
+       for (int i=0; i<2*countOfFilters; i++){
+           baseThickness[i]=Double.parseDouble(field2[i].getText());
+       }
+       return baseThickness;
+   }
+    @Override
+   public double [] createExpValue (int countOfFilters){
+       double [] expValue=new double [countOfFilters];
+       for (int i=0; i<countOfFilters; i++){
+           expValue[i]=Double.parseDouble(field2[i].getText());
+       }
+       return expValue;
+   }
 }

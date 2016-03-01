@@ -21,12 +21,14 @@ import javax.swing.SwingConstants;
  *
  * @author 1
  */
-public class DiamondView {
+public class DiamondView implements FilterView{
     JTextField [] field1;
     JTextField [] field2;
     JTextField [] field3;
             
-   public void createView(int countOfFilers, JPanel viewPanel, File file){
+   
+    @Override
+    public void createView(int countOfFilers, JPanel viewPanel, File file){
 
        JPanel [] jPan_filter=new JPanel[countOfFilers];
         
@@ -125,5 +127,26 @@ for (int i=0; i<countOfFilers; i++){
                     .addComponent(label3[i]))));
             viewPanel.add(jPan_filter[i]);
         }
-   }  
+   }
+   public String [] createCoutingBase(int countOfFilters){
+       String [] coutingBase=new String [countOfFilters];
+       for (int i=0; i<countOfFilters; i++){
+           coutingBase[i]=new String(field1[i].getText());
+       }
+       return coutingBase;
+   }
+   public double [] createBaseThickness (int countOfFilters){
+       double [] baseThickness=new double [countOfFilters];
+       for (int i=0; i<countOfFilters; i++){
+           baseThickness[i]=Double.parseDouble(field2[i].getText());
+       }
+       return baseThickness;
+   }
+    public double [] createExpValue (int countOfFilters){
+       double [] expValue=new double [countOfFilters];
+       for (int i=0; i<countOfFilters; i++){
+           expValue[i]=Double.parseDouble(field2[i].getText());
+       }
+       return expValue;
+   }
 }
