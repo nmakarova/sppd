@@ -8,7 +8,7 @@
  *
  * @author 1
  */
-import java.io.*;
+import callibration_model.Material;
 public class filter extends Material{
     // поля класса
     public String FName_base, FName_spray; // имя файла материала подложки и напыления

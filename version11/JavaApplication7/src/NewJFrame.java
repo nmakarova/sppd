@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 import callibration_model.Controller;
+import callibration_model.DataFromFile;
+import callibration_model.DetectorNew;
 import java.io.*;
 import javax.swing.JOptionPane;
 import java.util.Locale;
@@ -54,7 +56,8 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextField12.setText("0.01");
         jTextField17.setText("0.01");
         jTextField16.setText("50");
-        
+        controller=new Controller();
+        filterViewController=new FilterViewController();
         
          
     }
@@ -1006,31 +1009,16 @@ public class NewJFrame extends javax.swing.JFrame {
       jPanel4.revalidate();
       int x=jComboBox1.getSelectedIndex();
       if (x==0){
-      controller.setCoating(true);    
+      controller.setCoating(0);    
       }
       else{
-       controller.setCoating(false);      
+       controller.setCoating(1);      
       }
       Object sp=jSpinner1.getValue();
       count_of_filters =Integer.parseInt(sp.toString() );
-      FilterViewController filterViewController=new FilterViewController();
+      controller.setCountOfFilters(count_of_filters);
+     
       filterViewController.createFilerView(x,count_of_filters, jPanel4, file);   
-      String [] nameOfLayer;
-      double [] thickness;
-      double [] expValue=new double[count_of_filters];
-      expValue=filterViewController.createExpValue(x, count_of_filters);
-      if (x==0){
-          nameOfLayer=new String [2*count_of_filters];
-          thickness=new double [2*count_of_filters];
-          nameOfLayer=filterViewController.createNameBase(x, count_of_filters);
-          thickness=filterViewController.createThickness(x, count_of_filters);
-      
-    } else{
-    nameOfLayer=new String [count_of_filters];
-          thickness=new double [count_of_filters];
-          nameOfLayer=filterViewController.createNameBase(x, count_of_filters);
-          thickness=filterViewController.createThickness(x, count_of_filters);
-}
       
     }
          
@@ -1076,7 +1064,7 @@ public class NewJFrame extends javax.swing.JFrame {
        current=current+Sd*S*X[i][1]*X[i][0]*Math.abs(X[i+1][0]-X[i][0]); 
        // current=current+X[i][1]*Math.abs(X[i+1][0]-X[i][0]); 
        }
-       return //current;
+       return //current;  
                current*e0*1000000;
     }
     public double [] linear(double[]b, double [] I0, double [] I1,filter [] filter){
@@ -1274,39 +1262,43 @@ public class NewJFrame extends javax.swing.JFrame {
 
  
 //создаем источник тока
-        controller.createSource(jTextField1.getText());
-DataFromFile source=new DataFromFile(jTextField1.getText()); 
+controller.createSource(jTextField1.getText());
+//DataFromFile source=new DataFromFile(jTextField1.getText()); 
   //DataFromFile source=new DataFromFile("C:\\Users\\1\\Desktop\\ияф\\filter\\data.txt"); 
 //создаем объект детектор
-        String Name_base="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Si.txt";
-        String Name_layer="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Al.txt";
-       Detector detector=new Detector(Name_base, Name_layer);
+  //      String Name_base="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Si.txt";
+    //    String Name_layer="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Al.txt";
+      // Detector detector=new Detector(Name_base, Name_layer);
        
         //считываем паспортные значения
-        final    double k_pasp, hd_pasp, hc_pasp, hs_pasp;
-       k_pasp=Double.parseDouble(jTextField2.getText());
-       hd_pasp=Double.parseDouble(jTextField3.getText());
-       hc_pasp=Double.parseDouble(jTextField4.getText());
-       hs_pasp=Double.parseDouble(jTextField5.getText());
+       double [] paspParam=new double [4];
+        //final    double k_pasp, hd_pasp, hc_pasp, hs_pasp;
+       paspParam[0]=Double.parseDouble(jTextField2.getText());
+       paspParam[1]=Double.parseDouble(jTextField3.getText());
+       paspParam[2]=Double.parseDouble(jTextField4.getText());
+       paspParam[3]=Double.parseDouble(jTextField5.getText());
+       controller.setPaspParam(paspParam);
         //k_pasp=1;
         //hd_pasp=0.21;
         //hc_pasp=0.19;
         //hs_pasp=50;
         // начальная точка
-        double [] x1=new double[4];
-        x1[0]=k_pasp; x1[1]=hd_pasp; x1[2]=hc_pasp; x1[3]=hs_pasp;
+        //double [] x1=new double[4];
+        //x1[0]=k_pasp; x1[1]=hd_pasp; x1[2]=hc_pasp; x1[3]=hs_pasp;
         //матрица нижних ограничений
         double [] l1=new double [4];
         l1[0]=Double.parseDouble(jTextField13.getText());
         l1[1]=Double.parseDouble(jTextField12.getText()); 
         l1[2]=Double.parseDouble(jTextField17.getText());
         l1[3]=Double.parseDouble(jTextField16.getText());
+        controller.setLowerBorder(l1);
         //матрица верхних ограничений
         double [] u1=new double [4];
         u1[0]=Double.parseDouble(jTextField10.getText()); 
         u1[1]=Double.parseDouble(jTextField14.getText()); 
         u1[2]=Double.parseDouble(jTextField11.getText()); 
         u1[3]=Double.parseDouble(jTextField15.getText());
+        controller.setUpperBorder(u1);
         int n=0;
        int [] a = new int [4];
         if (jCheckBox1.isSelected()==false){
@@ -1325,6 +1317,28 @@ DataFromFile source=new DataFromFile(jTextField1.getText());
              n=n+1;
             a[3]=1;
         }
+        controller.setIfBorder(a);
+        controller.setCountOfBorders(n);
+        String [] nameOfLayer;
+      double [] thickness;
+      double [] expValue=new double[count_of_filters];
+      int y=controller.isCoating();
+      System.out.print(y);
+      expValue=filterViewController.createExpValue(y, count_of_filters);
+      if (y==0){
+          nameOfLayer=new String [2*count_of_filters];
+          thickness=new double [2*count_of_filters];
+          nameOfLayer=filterViewController.createNameBase(y, count_of_filters);
+          thickness=filterViewController.createThickness(y, count_of_filters);
+      
+    } else{
+         nameOfLayer=new String [count_of_filters];
+          thickness=new double [count_of_filters];
+          nameOfLayer=filterViewController.createNameBase(y, count_of_filters);
+          thickness=filterViewController.createThickness(y, count_of_filters);
+}
+   controller.createCollection(y, count_of_filters, nameOfLayer, thickness, expValue);
+        /*
          // создаемм объекты класса filter
         final filter Y[] = new filter[count_of_filters];   
        // create_filters(count_of_filters);
@@ -1476,7 +1490,7 @@ DataFromFile source=new DataFromFile(jTextField1.getText());
                if (xr[0]>u[0]){xr[0]=u[0]-0.00000001;} 
                if (xr[1]>u[1]){xr[1]=u[1]-0.00000001;}
                if (xr[2]>u[2]){xr[2]=u[2]-0.00000001;}
-               if (xr[3]>u[3]){xr[3]=u[3]-0.00000001;}*/
+               if (xr[3]>u[3]){xr[3]=u[3]-0.00000001;}
            }
                if (r1+r2>0.5){
                    for (int j=0; j<n; j++){
@@ -1557,14 +1571,21 @@ DataFromFile source=new DataFromFile(jTextField1.getText());
     while (SD>0.00001);   
      jj=0;
      //jTextField6.setText(String.format(Locale.US, "%.2f",k_pasp));
-     if (a[0]==0){jTextField6.setText(String.format(Locale.ENGLISH, "%.2f",k_pasp));}
-     else {jTextField6.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
-     if (a[1]==0){jTextField7.setText(String.format(Locale.ENGLISH, "%.2f",hd_pasp));}
-     else {jTextField7.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
-     if (a[2]==0){jTextField8.setText(String.format(Locale.ENGLISH, "%.2f",hc_pasp));}
-     else {jTextField8.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;} 
-     if (a[3]==0){jTextField9.setText(String.format(Locale.ENGLISH, "%.2f",hs_pasp));}
-     else {jTextField9.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
+     */
+       double [] realParams=new double[4];
+       realParams=controller.action();
+       jTextField6.setText(String.format(Locale.ENGLISH, "%.2f",realParams[0]));
+       jTextField7.setText(String.format(Locale.ENGLISH, "%.2f",realParams[1]));    
+       jTextField8.setText(String.format(Locale.ENGLISH, "%.2f",realParams[2]));
+       jTextField9.setText(String.format(Locale.ENGLISH, "%.2f",realParams[3]));
+
+// else {jTextField6.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
+     //if (a[1]==0){jTextField7.setText(String.format(Locale.ENGLISH, "%.2f",hd_pasp));}
+     //else {jTextField7.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
+     //if (a[2]==0){jTextField8.setText(String.format(Locale.ENGLISH, "%.2f",hc_pasp));}
+     //else {jTextField8.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;} 
+     //if (a[3]==0){jTextField9.setText(String.format(Locale.ENGLISH, "%.2f",hs_pasp));}
+     //else {jTextField9.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
       //  jTextArea2.append(Double.toString(SD)+"/"); 
        // jTextArea2.append(Integer.toString(m)); 
         //.setText("%.4fn"+Double.toString(c[0][0]));
@@ -2006,28 +2027,22 @@ int returnVal = fileopen.showOpenDialog(jButton6);
         Element message = (Element) root.getElementsByTagName("count_of_filters").item(0);
        String textContent = message.getTextContent(); 
         jSpinner1.setValue(Integer.parseInt(textContent));
+        Element message1 = (Element) root.getElementsByTagName("type_of_filters").item(0);
+        String textContent1 = message1.getTextContent(); 
+        int typeOfFilters=0;
+        if (textContent1.equals("silicium")){typeOfFilters=0;}
+        if (textContent1.equals("diamond")){typeOfFilters=1; }
+         jComboBox1.setSelectedIndex(typeOfFilters);
         jButton2.setVisible(false);
         jButton2ActionPerformed (evt);
         ////////////////////////////////////
         document.getDocumentElement().normalize();		
 	NodeList nList = document.getElementsByTagName("filter");
         for (int temp = 0; temp < nList.getLength(); temp++) {
-
-		Node nNode = nList.item(temp);
-				
-		//System.out.println("\nCurrent Element :" + nNode.getNodeName());
-				
+		Node nNode = nList.item(temp);				
 		if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
 			Element eElement = (Element) nNode;
-
-			//System.out.println("Staff id : " + eElement.getAttribute("id"));
-                        field1[temp].setText(eElement.getElementsByTagName("base").item(0).getTextContent());
-                        field2[temp].setText(eElement.getElementsByTagName("base_th").item(0).getTextContent());
-                        field1[temp+count_of_filters].setText(eElement.getElementsByTagName("cover").item(0).getTextContent());
-                        field2[temp+count_of_filters].setText(eElement.getElementsByTagName("cover_th").item(0).getTextContent());
-			field3[temp].setText(eElement.getElementsByTagName("cur").item(0).getTextContent());
-
+                        filterViewController.setXmlElement(typeOfFilters, eElement, temp, count_of_filters);
 		}
 	}
        }catch (Exception e) {
@@ -2160,6 +2175,7 @@ reportFrame.setVisible(true);
         detectorFrame.setVisible(true);
         detectorFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         DetectorNew detector=detectorFrame.createDetector();
+        controller.createDetector(detector);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
     
     /**
@@ -2329,4 +2345,5 @@ JLabel [] label6;
 JLabel [] label7;
 File file;
 Controller controller;
+FilterViewController filterViewController;
 }

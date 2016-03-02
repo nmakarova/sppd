@@ -1,4 +1,6 @@
 
+
+import callibration_model.*;
 import java.io.File;
 import javax.swing.JFileChooser;
 
@@ -220,6 +222,7 @@ int returnVal = fileopen.showOpenDialog(jButton2);
         detectorType=getDetectorType();
     }//GEN-LAST:event_jButton3ActionPerformed
 public DetectorNew createDetector(){
+   
     DetectorNew detector=new DetectorNew(new Material(baseName),new Material(contactName),detectorType);
     return detector;
 }

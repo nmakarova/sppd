@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import org.w3c.dom.Element;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -149,4 +150,11 @@ for (int i=0; i<countOfFilers; i++){
        }
        return expValue;
    }
+
+    @Override
+    public void setXmlElement(int typeOfFilter, Element eElement, int temp, int countOfFilters) {
+        field1[temp].setText(eElement.getElementsByTagName("base").item(0).getTextContent());
+        field2[temp].setText(eElement.getElementsByTagName("base_th").item(0).getTextContent());
+        field3[temp].setText(eElement.getElementsByTagName("cur").item(0).getTextContent());
+    }
 }

@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import org.w3c.dom.Element;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -146,16 +147,16 @@ for (int i=0; i<countOfFilers; i++){
    }
    
    public String [] createCoutingBase(int countOfFilters){
-       String [] coutingBase=new String [2*countOfFilters];
-       for (int i=0; i<2*countOfFilters; i++){
+       String [] coutingBase=new String [countOfFilters];
+       for (int i=0; i<countOfFilters; i++){
            coutingBase[i]=new String(field1[i].getText());
        }
        return coutingBase;
    }
     @Override
    public double [] createBaseThickness (int countOfFilters){
-       double [] baseThickness=new double [2*countOfFilters];
-       for (int i=0; i<2*countOfFilters; i++){
+       double [] baseThickness=new double [countOfFilters];
+       for (int i=0; i<countOfFilters; i++){
            baseThickness[i]=Double.parseDouble(field2[i].getText());
        }
        return baseThickness;
@@ -168,4 +169,13 @@ for (int i=0; i<countOfFilers; i++){
        }
        return expValue;
    }
+
+    @Override
+    public void setXmlElement(int typeOfFilter, Element eElement, int temp, int countOfFilters) {
+                        field1[temp].setText(eElement.getElementsByTagName("base").item(0).getTextContent());
+                        field2[temp].setText(eElement.getElementsByTagName("base_th").item(0).getTextContent());
+                        field1[temp+countOfFilters].setText(eElement.getElementsByTagName("cover").item(0).getTextContent());
+                        field2[temp+countOfFilters].setText(eElement.getElementsByTagName("cover_th").item(0).getTextContent());
+			field3[temp].setText(eElement.getElementsByTagName("cur").item(0).getTextContent());
+    }
 }
