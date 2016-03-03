@@ -146,7 +146,7 @@ for (int i=0; i<countOfFilers; i++){
     public double [] createExpValue (int countOfFilters){
        double [] expValue=new double [countOfFilters];
        for (int i=0; i<countOfFilters; i++){
-           expValue[i]=Double.parseDouble(field2[i].getText());
+           expValue[i]=Double.parseDouble(field3[i].getText());
        }
        return expValue;
    }

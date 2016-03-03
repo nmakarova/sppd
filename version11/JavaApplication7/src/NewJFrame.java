@@ -58,7 +58,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextField16.setText("50");
         controller=new Controller();
         filterViewController=new FilterViewController();
-        
+        detectorViewController=new DetectorViewController();
          
     }
 
@@ -137,7 +137,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -163,9 +162,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jButton9 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -620,38 +616,26 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton10.setText("Считать данные");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton7)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jButton8))))
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton7)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton10)))
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton8)))
                 .addContainerGap(2181, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -659,9 +643,7 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton10)
-                        .addGap(27, 27, 27)
+                        .addGap(61, 61, 61)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -917,38 +899,6 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("График", jPanel3);
-
-        jCheckBox5.setText("jCheckBox5");
-
-        jButton9.setText("jButton9");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox5)
-                    .addComponent(jButton9))
-                .addContainerGap(2662, Short.MAX_VALUE))
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton9)
-                .addGap(26, 26, 26)
-                .addComponent(jCheckBox5)
-                .addContainerGap(608, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("tab4", jPanel10);
 
         jScrollPane3.setViewportView(jTabbedPane1);
 
@@ -1257,27 +1207,368 @@ public class NewJFrame extends javax.swing.JFrame {
         b1[i]=z1[i].doubleValue();
     }
         return b1;
+    }public double [][] current (DataFromFile source, Detector detector, filter filter, double []b) {
+       final double e0=1.6e-19;
+       //находим верхний предел интегрирования
+       int n=source.SizeOfFile(source.Name_of_file);
+             double [][] current=new double[n][2]; 
+
+       //находим точки разбиения
+      // double [][] X=new double[][];
+          double  X[][]=source.Data_reading(source.Name_of_file, n);
+          for (int i=0; i<n; i++){
+              current [i][0]=X[i][0];
+          }
+       //первый фильтр
+       int n_f1=filter.SizeOfFile(filter.FName_base);
+       double [][] X_f1=filter.Data_reading(filter.FName_base, n_f1);
+       double [][] A_f1=filter.Material_interpolation(X_f1, n_f1);
+       //второй фильтр
+       int n_f2=filter.SizeOfFile(filter.FName_spray);
+       double [][] X_f2=filter.Data_reading(filter.FName_spray, n_f2);
+       double [][]A_f2=filter.Material_interpolation(X_f2, n_f2);
+       //детектор
+       int n_d1=detector.SizeOfFile(detector.FName_base);
+       double [][]X_d1=detector.Data_reading(detector.FName_base, n_d1);
+       double [][]A_d1=detector.Material_interpolation(X_d1, n_d1);
+       int n_d2=detector.SizeOfFile(detector.FName_spray);
+       double [][]X_d2=detector.Data_reading(detector.FName_spray, n_d2);
+       double [][]A_d2=detector.Material_interpolation(X_d2, n_d2);
+       for (int i=0; i<n;i++){
+        double Sd;
+        Sd=Math.pow(filter.Point_z(X_f1, A_f1, n_f1, X[i][0]), filter.Thick_base)*Math.pow(filter.Point_z(X_f2, A_f2, n_f2, X[i][0]), filter.Thick_spray);
+        double S;
+        S=0.273*b[0]*Math.pow(detector.Point_z(X_d1, A_d1, n_d1, X[i][0]), b[1]);
+        S=S*Math.pow(detector.Point_z(X_d2, A_d2, n_d2, X[i][0]), b[2]);
+        S=S*(1-Math.pow(detector.Point_z(X_d1, A_d1, n_d1, X[i][0]), b[3]));
+       current[i][1]=Sd*S*X[i][1]*X[i][0]; 
+       }
+       return 
+               current;
     }
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        JFileChooser dialog = new JFileChooser();
+    dialog.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+    dialog.setAcceptAllFileFilterUsed(false);
+   if (dialog.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+       file= dialog.getCurrentDirectory();  
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }   
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    detectorViewController.setDetectorView();
+// DetectorNew detector=detectorFrame.createDetector();
+       // controller.createDetector(detector);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton6ActionPerformed
+
+    private void jRadioButton6StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRadioButton6StateChanged
+        if (jRadioButton6.isSelected()==true) {
+            jTextField20.setVisible(true);
+            jTextField21.setVisible(true);
+            jLabel29.setVisible(true);
+            jLabel30.setVisible(true);
+        }
+        else {
+            jTextField20.setVisible(false);
+            jTextField21.setVisible(false);
+            jLabel29.setVisible(false);
+            jLabel30.setVisible(false);
+        }
+    }//GEN-LAST:event_jRadioButton6StateChanged
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        /*if (jRadioButton2.isSelected()==true) {
+            jTextField18.setVisible(true);
+            jTextField19.setVisible(true);
+            jLabel25.setVisible(true);
+            jLabel26.setVisible(true);
+        }
+        if (jRadioButton1.isSelected()==true) {
+            jTextField18.setVisible(false);
+            jTextField19.setVisible(false);
+            jLabel25.setVisible(false);
+            jLabel26.setVisible(false);
+        }*/
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRadioButton2StateChanged
+        if (jRadioButton2.isSelected()==true) {
+            jTextField18.setVisible(true);
+            jTextField19.setVisible(true);
+            jLabel25.setVisible(true);
+            jLabel26.setVisible(true);
+        }
+        else {
+            jTextField18.setVisible(false);
+            jTextField19.setVisible(false);
+            jLabel25.setVisible(false);
+            jLabel26.setVisible(false);
+        }
+    }//GEN-LAST:event_jRadioButton2StateChanged
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        DataFromFile source=new DataFromFile("C:\\Users\\1\\Desktop\\ияф\\filter\\data.txt");
+        //создаем объект детектор
+        String Name_base="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Si.txt";
+        String Name_layer="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Al.txt";
+        Detector detector=new Detector(Name_base, Name_layer);
+        final filter []Y = new filter[count_of_filters];
+        //Начальная инициализация экспериментальными токами
+        for (int i=0;i<count_of_filters; i++){
+            Y[i]=new filter(field1[i].getText(),field1[i+count_of_filters].getText(), Double.parseDouble(field2[i].getText()), Double.parseDouble(field2[i+count_of_filters].getText()),Double.parseDouble(field3[i].getText()) );
+            // I0[i]= Y[i].Exp_value;
+            // jTextArea2.append(Double.toString(I0[i]));
+        }
+        double [] b=new double[4];
+        b[0]=Double.parseDouble(jTextField6.getText());
+        b[1]=Double.parseDouble(jTextField7.getText());
+        b[2]=Double.parseDouble(jTextField8.getText());
+        b[3]=Double.parseDouble(jTextField9.getText());
+        double [] c= new double[4];
+        for (int i=0; i<4; i++){
+            c[i]=b[i];
+        }
+        int n=source.SizeOfFile(source.Name_of_file);
+        double [][][] Y1= new double [count_of_filters][n][2];
+        for (int i=0; i<count_of_filters; i++){
+            Y1[i]=current (source, detector, Y[i],c);
+        }
+        double x_max=0, x_min=0, y_max=0, y_min=0;
+        if (jRadioButton2.isSelected()==true){
+            x_min=Double.parseDouble(jTextField18.getText());
+            x_max=Double.parseDouble(jTextField19.getText());
+        }
+        if (jRadioButton6.isSelected()==true){
+            y_min=Double.parseDouble(jTextField20.getText());
+            y_max=Double.parseDouble(jTextField21.getText());
+        }
+        boolean x_log, y_log;
+        if (jRadioButton4.isSelected()==true)
+        x_log=true;
+        else x_log=false;
+        if (jRadioButton8.isSelected()==true)
+        y_log=true;
+        else y_log=false;
+        try{
+            jPanel6.removeAll();
+            XYLineChart_AWT chart = new XYLineChart_AWT("Графики", "Поглощение", count_of_filters, n,Y1, jPanel6,x_max, x_min, y_max, y_min, x_log, y_log);
+            chart.pack( );
+
+            chart.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                    if (JOptionPane.showConfirmDialog(chart,
+                        "Are you sure to close this window?", "Really Closing?",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+                    System.out.println("actionPerformed()");
+
+                }
+
+            }
+        });
+        }catch(Exception e){};
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        ArrayList<SubReportBean> dataBeanList = new ArrayList<SubReportBean>();
+        SubReportBean tempBean = new SubReportBean();
+        tempBean.setfNamebase(0);
+        tempBean.setfNamespray(0,1);
+        tempBean.setthickspray(0,1);
+        tempBean.setExpvalue(0);
+        dataBeanList.add(tempBean);
+        SubReportBean tempBean1 = new SubReportBean();
+        tempBean1.setfNamebase(0);
+        tempBean1.setfNamespray(0,1);
+        tempBean1.setthickspray(0,1);
+        tempBean1.setExpvalue(0);
+        dataBeanList.add(tempBean1);
+        JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(dataBeanList);
+        String pathForPattern1 = "C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version11\\JavaApplication7\\src\\filters1.jrxml";
+        //JasperDesign subjasperDesign = JRXmlLoader.load(pathForPattern1);
+        try{ JasperReport jasperMasterReport = JasperCompileManager.compileReport(pathForPattern1);
+            Map<String, Object> parameters = new HashMap<String, Object>();
+            // parameters.put("subreportParameter", jasperSubReport);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperMasterReport,
+                parameters, beanColDataSource);
+            JRViewer jv = new JRViewer(jasperPrint);
+            JFrame reportFrame = new JFrame();
+            reportFrame.setSize(800, 1000);
+            reportFrame.getContentPane().add(jv);
+            reportFrame.validate();
+            reportFrame.setVisible(true);
+        }
+        catch(JRException e){e.printStackTrace();
+            System.out.print("Ooops!");}
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // по нажатию создается отчет в джаспер и показывается в отдельной форме
+        /* ArrayList<DataBean> dataBeanList = new ArrayList<DataBean>();
+        DataBean tempBean = new DataBean();
+        tempBean.setk(jTextField6.getText());
+        tempBean.sethd(jTextField7.getText());
+        tempBean.sethc(jTextField8.getText());
+        tempBean.seths(jTextField9.getText());
+        dataBeanList.add(tempBean);
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("DATE", new Date());
+        String reportName = "C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version10\\JavaApplication7\\src\\report1.jrxml"; // полный путь к отчету
+        String pathForSaving = "C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version10\\JavaApplication7\\src\\report.pdf";
+        //List<Contract> contracstList = _getContracts(); // получаем список договоров с сервера
+        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(dataBeanList); //создаем коллекцию Jasper Report Bean Collection
+        /*try{
+            File reportPattern = new File(reportName);
+            System.out.print(11);}
+        catch(Exception e){System.out.print(1);}
+        try{File reportPattern = new File(reportName);
+            JasperDesign jasperDesign = JRXmlLoader.load(reportPattern);
+            System.out.print(22);}
+        catch(Exception e){System.out.print(2);}
+        try{
+            File reportPattern = new File(reportName);
+            JasperDesign jasperDesign = JRXmlLoader.load(reportPattern);
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            System.out.print(33);}
+        catch(Exception e){System.out.print(3);}
+        try{
+            File reportPattern = new File(reportName);
+            JasperDesign jasperDesign = JRXmlLoader.load(reportPattern);
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, beanCollectionDataSource);
+            System.out.print(44);
+        }
+        catch(Exception e){System.out.print(4);}
+        try{
+            File reportPattern = new File(reportName);
+            JasperDesign jasperDesign = JRXmlLoader.load(reportPattern);
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,
+                parameters, beanCollectionDataSource);
+            JasperExportManager.exportReportToPdfFile(jasperPrint, pathForSaving);
+            System.out.print(55); }
+        catch(Exception e){System.out.print(5);}
+        /*JasperPrint jp = JasperFillManager.fillReport(reportName, null, beanCollectionDataSource);
+        //JasperPrint jp = JasperFillManager.fillReport(reportName, new HashMap(), beanCollectionDataSource); // заполняем датасет отчета данными из коллекции
+        File reportPattern = new File("C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version10\\JavaApplication7\\src\\report1.jrxml");
+        JasperDesign jasperDesign = JRXmlLoader.load(reportPattern);
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+        JRViewer jv = new JRViewer(jp); // компонент просмотра отчета
+        JasperExportManager.exportReportToPdfFile(jp,"C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version10\\JavaApplication7\\src\\report1.pdf");
+        JFrame reportFrame = new JFrame();
+        reportFrame.getContentPane().add(jv);
+        reportFrame.validate();
+        reportFrame.setVisible(true);}
+        catch(Exception e){System.out.print("что-то пошло не так");}*/
+        //Generator rt=new Generator();
+        try {
+           // new Generator().create();
+            System.out.println("Генерация отчёта завершена");
+        } catch (Exception e) {
+            System.out.println("Во время генерации возникла ошибка: " + e);
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        String myString = "k="+jTextField6.getText()+" hd="+jTextField7.getText()+" hc="+jTextField8.getText()+" hs="+jTextField9.getText();
+        StringSelection stringSelection = new StringSelection(myString);
+        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clpbrd.setContents(stringSelection, null);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+        if (jCheckBox4.isSelected()==true) {
+            jLabel22.setVisible(false);
+            jLabel23.setVisible(false);
+            jTextField16.setVisible(false);
+            jTextField15.setVisible(false);
+        }
+        if (jCheckBox4.isSelected()==false) {
+            jLabel22.setVisible(true);
+            jLabel23.setVisible(true);
+            jTextField16.setVisible(true);
+            jTextField15.setVisible(true);
+        }
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+        if (jCheckBox3.isSelected()==true) {
+            jLabel20.setVisible(false);
+            jLabel21.setVisible(false);
+            jTextField11.setVisible(false);
+            jTextField17.setVisible(false);
+        }
+        if (jCheckBox3.isSelected()==false) {
+            jLabel20.setVisible(true);
+            jLabel21.setVisible(true);
+            jTextField11.setVisible(true);
+            jTextField17.setVisible(true);
+        }
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        if (jCheckBox2.isSelected()==true) {
+            jLabel18.setVisible(false);
+            jLabel19.setVisible(false);
+            jTextField12.setVisible(false);
+            jTextField14.setVisible(false);
+        }
+        if (jCheckBox2.isSelected()==false) {
+            jLabel18.setVisible(true);
+            jLabel19.setVisible(true);
+            jTextField12.setVisible(true);
+            jTextField14.setVisible(true);
+        }
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        if (jCheckBox1.isSelected()==true) {
+            jLabel16.setVisible(false);
+            jLabel17.setVisible(false);
+            jTextField10.setVisible(false);
+            jTextField13.setVisible(false);
+        }
+        if (jCheckBox1.isSelected()==false) {
+            jLabel16.setVisible(true);
+            jLabel17.setVisible(true);
+            jTextField10.setVisible(true);
+            jTextField13.setVisible(true);
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
- 
-//создаем источник тока
-controller.createSource(jTextField1.getText());
-//DataFromFile source=new DataFromFile(jTextField1.getText()); 
-  //DataFromFile source=new DataFromFile("C:\\Users\\1\\Desktop\\ияф\\filter\\data.txt"); 
-//создаем объект детектор
-  //      String Name_base="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Si.txt";
-    //    String Name_layer="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Al.txt";
-      // Detector detector=new Detector(Name_base, Name_layer);
-       
+        //создаем источник тока
+        controller.createSource(jTextField1.getText());
+
+        //создаем детектор
+        String detectorBase=detectorViewController.getBaseName();
+        String detectorContact=detectorViewController.getContactName();
+        int detectorType=detectorViewController.getDetectorType();
+        controller.createDetector(detectorBase, detectorContact, detectorType);
+        //DataFromFile source=new DataFromFile(jTextField1.getText());
+        //DataFromFile source=new DataFromFile("C:\\Users\\1\\Desktop\\ияф\\filter\\data.txt");
+        //создаем объект детектор
+        //      String Name_base="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Si.txt";
+        //    String Name_layer="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Al.txt";
+        // Detector detector=new Detector(Name_base, Name_layer);
+
         //считываем паспортные значения
-       double [] paspParam=new double [4];
+        double [] paspParam=new double [4];
         //final    double k_pasp, hd_pasp, hc_pasp, hs_pasp;
-       paspParam[0]=Double.parseDouble(jTextField2.getText());
-       paspParam[1]=Double.parseDouble(jTextField3.getText());
-       paspParam[2]=Double.parseDouble(jTextField4.getText());
-       paspParam[3]=Double.parseDouble(jTextField5.getText());
-       controller.setPaspParam(paspParam);
+        paspParam[0]=Double.parseDouble(jTextField2.getText());
+        paspParam[1]=Double.parseDouble(jTextField3.getText());
+        paspParam[2]=Double.parseDouble(jTextField4.getText());
+        paspParam[3]=Double.parseDouble(jTextField5.getText());
+        controller.setPaspParam(paspParam);
         //k_pasp=1;
         //hd_pasp=0.21;
         //hc_pasp=0.19;
@@ -1288,95 +1579,94 @@ controller.createSource(jTextField1.getText());
         //матрица нижних ограничений
         double [] l1=new double [4];
         l1[0]=Double.parseDouble(jTextField13.getText());
-        l1[1]=Double.parseDouble(jTextField12.getText()); 
+        l1[1]=Double.parseDouble(jTextField12.getText());
         l1[2]=Double.parseDouble(jTextField17.getText());
         l1[3]=Double.parseDouble(jTextField16.getText());
         controller.setLowerBorder(l1);
         //матрица верхних ограничений
         double [] u1=new double [4];
-        u1[0]=Double.parseDouble(jTextField10.getText()); 
-        u1[1]=Double.parseDouble(jTextField14.getText()); 
-        u1[2]=Double.parseDouble(jTextField11.getText()); 
+        u1[0]=Double.parseDouble(jTextField10.getText());
+        u1[1]=Double.parseDouble(jTextField14.getText());
+        u1[2]=Double.parseDouble(jTextField11.getText());
         u1[3]=Double.parseDouble(jTextField15.getText());
         controller.setUpperBorder(u1);
         int n=0;
-       int [] a = new int [4];
+        int [] a = new int [4];
         if (jCheckBox1.isSelected()==false){
             n=n+1;
             a[0]=1;
         }
         if (jCheckBox2.isSelected()==false){
-             n=n+1;
+            n=n+1;
             a[1]=1;
         }
         if (jCheckBox3.isSelected()==false){
-             n=n+1;
+            n=n+1;
             a[2]=1;
         }
         if (jCheckBox4.isSelected()==false){
-             n=n+1;
+            n=n+1;
             a[3]=1;
         }
         controller.setIfBorder(a);
         controller.setCountOfBorders(n);
         String [] nameOfLayer;
-      double [] thickness;
-      double [] expValue=new double[count_of_filters];
-      int y=controller.isCoating();
-      System.out.print(y);
-      expValue=filterViewController.createExpValue(y, count_of_filters);
-      if (y==0){
-          nameOfLayer=new String [2*count_of_filters];
-          thickness=new double [2*count_of_filters];
-          nameOfLayer=filterViewController.createNameBase(y, count_of_filters);
-          thickness=filterViewController.createThickness(y, count_of_filters);
-      
-    } else{
-         nameOfLayer=new String [count_of_filters];
-          thickness=new double [count_of_filters];
-          nameOfLayer=filterViewController.createNameBase(y, count_of_filters);
-          thickness=filterViewController.createThickness(y, count_of_filters);
-}
-   controller.createCollection(y, count_of_filters, nameOfLayer, thickness, expValue);
+        double [] thickness;
+        double [] expValue=new double[count_of_filters];
+        int y=controller.isCoating();
+        expValue=filterViewController.createExpValue(y, count_of_filters);
+        if (y==0){
+            nameOfLayer=new String [2*count_of_filters];
+            thickness=new double [2*count_of_filters];
+            nameOfLayer=filterViewController.createNameBase(y, count_of_filters);
+            thickness=filterViewController.createThickness(y, count_of_filters);
+
+        } else{
+            nameOfLayer=new String [count_of_filters];
+            thickness=new double [count_of_filters];
+            nameOfLayer=filterViewController.createNameBase(y, count_of_filters);
+            thickness=filterViewController.createThickness(y, count_of_filters);
+        }
+        controller.createCollection(y, count_of_filters, nameOfLayer, thickness, expValue);
         /*
-         // создаемм объекты класса filter
-        final filter Y[] = new filter[count_of_filters];   
-       // create_filters(count_of_filters);
+        // создаемм объекты класса filter
+        final filter Y[] = new filter[count_of_filters];
+        // create_filters(count_of_filters);
         // объявления массивов для токов детектора
         double [] I0= new double [count_of_filters];
         double [] I1= new double [count_of_filters];
         //Начальная инициализация экспериментальными токами
         for (int i=0;i<count_of_filters; i++){
-        Y[i]=new filter(field1[i].getText(),field1[i+count_of_filters].getText(), Double.parseDouble(field2[i].getText()), Double.parseDouble(field2[i+count_of_filters].getText()),Double.parseDouble(field3[i].getText()) );
-        I0[i]= Y[i].Exp_value; 
-      // jTextArea2.append(Double.toString(I0[i]));
+            Y[i]=new filter(field1[i].getText(),field1[i+count_of_filters].getText(), Double.parseDouble(field2[i].getText()), Double.parseDouble(field2[i+count_of_filters].getText()),Double.parseDouble(field3[i].getText()) );
+            I0[i]= Y[i].Exp_value;
+            // jTextArea2.append(Double.toString(I0[i]));
         }
         double [] l=new double [n];
         double [] u=new double [n];
-       int k=2*n;
-       double [][] c=new double [k][n];
-       double [] xc=new double [n];
-       int jj=0, zz=0, yy=0;
-       boolean flag1=false; boolean flag2=false;
-       double r1=hd_pasp; double r2=hc_pasp; //переменные для неявного ограничения r1+r2<=0.5
-       for (int i=0;i<4; i++){
-        if (a[i]==1) {
-            c[0][jj]=x1[i];
-            l[jj]=l1[i];
-            u[jj]=u1[i];
-            if (i==1){
-              flag1=true;
-              r1=x1[i];
-              zz=jj;
+        int k=2*n;
+        double [][] c=new double [k][n];
+        double [] xc=new double [n];
+        int jj=0, zz=0, yy=0;
+        boolean flag1=false; boolean flag2=false;
+        double r1=hd_pasp; double r2=hc_pasp; //переменные для неявного ограничения r1+r2<=0.5
+        for (int i=0;i<4; i++){
+            if (a[i]==1) {
+                c[0][jj]=x1[i];
+                l[jj]=l1[i];
+                u[jj]=u1[i];
+                if (i==1){
+                    flag1=true;
+                    r1=x1[i];
+                    zz=jj;
+                }
+                if (i==2){
+                    flag2=true;
+                    r2=x1[i];
+                    yy=jj;
+                }
+                jj=jj+1;
             }
-            if (i==2){
-              flag2=true;
-              r2=x1[i];
-              yy=jj;
-            }
-            jj=jj+1;
-        }  
-       }
+        }
         //инициализируем начальную точку комплекса
         for (int j=0; j<n; j++){
             xc[j]=c[0][j];
@@ -1388,218 +1678,274 @@ controller.createSource(jTextField1.getText());
         if (a[2]==0){c1[2]=hc_pasp;} else {c1[2]=c[0][jj]; jj=jj+1;}
         if (a[3]==0){c1[3]=hs_pasp;} else {c1[3]=c[0][jj]; jj=jj+1;}
         Random r=new Random();
-       double [] F=new double[k];
+        double [] F=new double[k];
         for (int t=0;t<count_of_filters; t++){
             I1[t]=detector_current(source,detector,Y[t], c1);
-         // jTextArea2.append(Double.toString(I1[i]));
+            // jTextArea2.append(Double.toString(I1[i]));
         }
         /// Ищем сумму квадратов невязок между экспериментом и значениями токов
- ////с паспортными параметрами
+        ////с паспортными параметрами
         F[0]=nevjazka(I1, I0);
         double v=0.1;
-       for (int i=1; i<k; i++){
-           v=v+0.1;
-           for (int j=0; j<n; j++){
-               c[i][j]=l[j]+v*(u[j]-l[j]);
-              // jTextArea1.append(Double.toString(c[i][j])+"/"); 
-           }
-           if (flag1==true){r1=c[i][zz];}
-           if (flag2==true){r2=c[i][yy];}
-          while (r1+r2>0.5){
-               for (int j=0;j<n;j++){
-                   c[i][j]=(c[i][j]+xc[j])/2;
-               }
-            if (flag1==true){r1=c[i][zz];}
-            if (flag2==true){r2=c[i][yy];}   
-           }
-           for (int j=0;j<n;j++){
-               xc[j]=((i)*xc[j]+c[i][j])/(i+1);
-           }
-           jj=0;
-        if (a[0]==0){c1[0]=k_pasp;} else {c1[0]=c[i][jj]; jj=jj+1;}
-        if (a[1]==0){c1[1]=hd_pasp;} else {c1[1]=c[i][jj]; jj=jj+1;}
-        if (a[2]==0){c1[2]=hc_pasp;} else {c1[2]=c[i][jj]; jj=jj+1;}
-        if (a[3]==0){c1[3]=hs_pasp;} else {c1[3]=c[i][jj]; jj=jj+1;}
-            for (int t=0;t<count_of_filters; t++){
-            I1[t]=detector_current(source,detector,Y[t], c1);
-         // jTextArea2.append(Double.toString(I1[i]));
-        }
-        /// Ищем сумму квадратов невязок между экспериментом и значениями токов
- ////с паспортными параметрами
-        F[i]=nevjazka(I1, I0);
-            //jTextArea1.append(Double.toString(F[i])+"/"); 
-       }
-       
-       for (int j=0; j<k-1; j++){
-           for (int i=j+1; i<k; i++){
-               if(F[j]>F[i]){
-                   double F1;
-                   F1=F[j]; F[j]=F[i]; F[i]=F1;
-                   double [] Y1=new double [n];
-                   for (int z=0; z<n; z++){
-                       Y1[z]=c[j][z]; c[j][z]=c[i][z]; c[i][z]=Y1[z];
-                   } 
-               }
-           }
-       }
-       
-       double FM=F[0];
-       double A=1.3;
-       double [] x0=new double [n];
-       double [] xh=new double [n];
-       double [] xr=new double [n];
-       double Fr;
-       boolean cl=true;
-       double S1; double S2; double D; double DM; double SD;
-       S1=0; S2=0; SD=0;
-    for (int i=0; i<k; i++){
-        S1=S1+F[i];
-        S2=S2+F[i]*F[i];
-    }
-    SD=S2-S1*S1/k;
-    SD=SD/k;
-    //jTextArea1.append(Double.toString(SD)+"/"); 
-    int m=0;
-     do{
-        for (int j=0; j<n; j++){
-           xh[j]=c[k-1][j];
-           x0[j]=(k*xc[j]-xh[j])/(k-1);
-       }
-       for (int j=0; j<n; j++){
-           xr[j]=(1+A)*x0[j]-A*xh[j];
-       }
-      do{
-          for (int i=0; i<n; i++){
-              if (xr[i]<l[i]) cl=false;
-              if (xr[i]>u[i]) cl=false;
-          }
-          if (flag1==true){r1=xr[zz];}
-          if (flag2==true){r2=xr[yy];}
-       //cl=(xr[0]>=l[0])&&(xr[1]>=l[1])&&(xr[0]<=u[0])&&(xr[1]<=u[1])&&(xr[2]>=l[2])&&(xr[2]<=u[2])&&(xr[3]>=l[3])&&(xr[3]<=u[3]);
-       while ((cl==false)||(r1+r2>0.5)){
-           m=m+1;
-           if (cl==false){
-               for (int i=0; i<n; i++){
-                   if (xr[i]<l[i]) xr[i]=l[i]+0.00000001;
-                   if (xr[i]>u[i]) xr[i]=u[i]-0.00000001;
-               }
-              /* if (xr[0]<l[0]){xr[0]=l[0]+0.00000001;}
-               if (xr[1]<l[1]){xr[1]=l[1]+0.00000001;}
-               if (xr[2]<l[2]){xr[2]=l[2]+0.00000001;}
-               if (xr[3]<l[3]){xr[3]=l[3]+0.00000001;}
-               if (xr[0]>u[0]){xr[0]=u[0]-0.00000001;} 
-               if (xr[1]>u[1]){xr[1]=u[1]-0.00000001;}
-               if (xr[2]>u[2]){xr[2]=u[2]-0.00000001;}
-               if (xr[3]>u[3]){xr[3]=u[3]-0.00000001;}
-           }
-               if (r1+r2>0.5){
-                   for (int j=0; j<n; j++){
-                       xr[j]=(xr[j]+x0[j])/2;
-                   }
-               }
-          cl=true;
-          for (int i=0; i<n; i++){
-              if (xr[i]<l[i]) cl=false;
-              if (xr[i]>u[i]) cl=false;
-          }
-          if (flag1==true){r1=xr[zz];}
-          if (flag2==true){r2=xr[yy];}
-          //cl=(xr[0]>=l[0])&&(xr[1]>=l[1])&&(xr[0]<=u[0])&&(xr[1]<=u[1])&&(xr[2]>=l[2])&&(xr[2]<=u[2])&&(xr[3]>=l[3])&&(xr[3]<=u[3]);
-       }
-       jj=0;
-        if (a[0]==0){c1[0]=k_pasp;} else {c1[0]=xr[jj]; jj=jj+1;}
-        if (a[1]==0){c1[1]=hd_pasp;} else {c1[1]=xr[jj]; jj=jj+1;}
-        if (a[2]==0){c1[2]=hc_pasp;} else {c1[2]=xr[jj]; jj=jj+1;}
-        if (a[3]==0){c1[3]=hs_pasp;} else {c1[3]=xr[jj]; jj=jj+1;}
-      for (int t=0;t<count_of_filters; t++){
-            I1[t]=detector_current(source,detector,Y[t], c1);
-         // jTextArea2.append(Double.toString(I1[i]));
-        }
-        /// Ищем сумму квадратов невязок между экспериментом и значениями токов
- ////с паспортными параметрами
-        Fr=nevjazka(I1, I0);
-       if (Fr>=F[k-1]){
-         for (int j=0; j<n; j++){
-                       xr[j]=(xr[j]+x0[j])/2;
-                   } 
-         
-       }
-      }
-         while (Fr>=F[k-1]);
-    F[k-1]=Fr;
-    for (int j=0; j<n; j++){
-        xc[j]=k*xc[j]-c[k-1][j]+xr[j];
-        xc[j]=xc[j]/k;
-        c[k-1][j]=xr[j];
-    }
-    for (int j=0; j<k-1; j++){
-           for (int i=j+1; i<k; i++){
-               if(F[j]>F[i]){
-                   double F1;
-                   F1=F[j]; F[j]=F[i]; F[i]=F1;
-                   double [] Y1=new double [n];
-                   for (int z=0; z<n; z++){
-                       Y1[z]=c[j][z]; c[j][z]=c[i][z]; c[i][z]=Y1[z];
-                   } 
-               }
-           }
-       }
-    
-    S1=0; S2=0; SD=0;
-    for (int i=0; i<k; i++){
-        S1=S1+F[i];
-        S2=S2+F[i]*F[i];
-    }
-    SD=S2-S1*S1/k;
-    SD=SD/k;
-    DM=0;
-    for (int i=0; i<k-1; i++){
-        for (int j=i+1; j<k; j++){
-            D=0;
-            for (int z=0; z<n;z++){
-                D=D+Math.pow(c[i][z]-c[j][z], 2);
+        for (int i=1; i<k; i++){
+            v=v+0.1;
+            for (int j=0; j<n; j++){
+                c[i][j]=l[j]+v*(u[j]-l[j]);
+                // jTextArea1.append(Double.toString(c[i][j])+"/");
             }
-            D=D*D;
-            if (D>DM) DM=0;
+            if (flag1==true){r1=c[i][zz];}
+            if (flag2==true){r2=c[i][yy];}
+            while (r1+r2>0.5){
+                for (int j=0;j<n;j++){
+                    c[i][j]=(c[i][j]+xc[j])/2;
+                }
+                if (flag1==true){r1=c[i][zz];}
+                if (flag2==true){r2=c[i][yy];}
+            }
+            for (int j=0;j<n;j++){
+                xc[j]=((i)*xc[j]+c[i][j])/(i+1);
+            }
+            jj=0;
+            if (a[0]==0){c1[0]=k_pasp;} else {c1[0]=c[i][jj]; jj=jj+1;}
+            if (a[1]==0){c1[1]=hd_pasp;} else {c1[1]=c[i][jj]; jj=jj+1;}
+            if (a[2]==0){c1[2]=hc_pasp;} else {c1[2]=c[i][jj]; jj=jj+1;}
+            if (a[3]==0){c1[3]=hs_pasp;} else {c1[3]=c[i][jj]; jj=jj+1;}
+            for (int t=0;t<count_of_filters; t++){
+                I1[t]=detector_current(source,detector,Y[t], c1);
+                // jTextArea2.append(Double.toString(I1[i]));
+            }
+            /// Ищем сумму квадратов невязок между экспериментом и значениями токов
+            ////с паспортными параметрами
+            F[i]=nevjazka(I1, I0);
+            //jTextArea1.append(Double.toString(F[i])+"/");
         }
-    }
-    //jTextArea2.append(Double.toString(SD)+"/");
-    m=m+1;
-   // if (m>60) break;
-    }
-   //while ((SD>0.000001)&&(DM>0.0001));
-    while (SD>0.00001);   
-     jj=0;
-     //jTextField6.setText(String.format(Locale.US, "%.2f",k_pasp));
-     */
-       double [] realParams=new double[4];
-       realParams=controller.action();
-       jTextField6.setText(String.format(Locale.ENGLISH, "%.2f",realParams[0]));
-       jTextField7.setText(String.format(Locale.ENGLISH, "%.2f",realParams[1]));    
-       jTextField8.setText(String.format(Locale.ENGLISH, "%.2f",realParams[2]));
-       jTextField9.setText(String.format(Locale.ENGLISH, "%.2f",realParams[3]));
 
-// else {jTextField6.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
-     //if (a[1]==0){jTextField7.setText(String.format(Locale.ENGLISH, "%.2f",hd_pasp));}
-     //else {jTextField7.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
-     //if (a[2]==0){jTextField8.setText(String.format(Locale.ENGLISH, "%.2f",hc_pasp));}
-     //else {jTextField8.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;} 
-     //if (a[3]==0){jTextField9.setText(String.format(Locale.ENGLISH, "%.2f",hs_pasp));}
-     //else {jTextField9.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
-      //  jTextArea2.append(Double.toString(SD)+"/"); 
-       // jTextArea2.append(Integer.toString(m)); 
+        for (int j=0; j<k-1; j++){
+            for (int i=j+1; i<k; i++){
+                if(F[j]>F[i]){
+                    double F1;
+                    F1=F[j]; F[j]=F[i]; F[i]=F1;
+                    double [] Y1=new double [n];
+                    for (int z=0; z<n; z++){
+                        Y1[z]=c[j][z]; c[j][z]=c[i][z]; c[i][z]=Y1[z];
+                    }
+                }
+            }
+        }
+
+        double FM=F[0];
+        double A=1.3;
+        double [] x0=new double [n];
+        double [] xh=new double [n];
+        double [] xr=new double [n];
+        double Fr;
+        boolean cl=true;
+        double S1; double S2; double D; double DM; double SD;
+        S1=0; S2=0; SD=0;
+        for (int i=0; i<k; i++){
+            S1=S1+F[i];
+            S2=S2+F[i]*F[i];
+        }
+        SD=S2-S1*S1/k;
+        SD=SD/k;
+        //jTextArea1.append(Double.toString(SD)+"/");
+        int m=0;
+        do{
+            for (int j=0; j<n; j++){
+                xh[j]=c[k-1][j];
+                x0[j]=(k*xc[j]-xh[j])/(k-1);
+            }
+            for (int j=0; j<n; j++){
+                xr[j]=(1+A)*x0[j]-A*xh[j];
+            }
+            do{
+                for (int i=0; i<n; i++){
+                    if (xr[i]<l[i]) cl=false;
+                    if (xr[i]>u[i]) cl=false;
+                }
+                if (flag1==true){r1=xr[zz];}
+                if (flag2==true){r2=xr[yy];}
+                //cl=(xr[0]>=l[0])&&(xr[1]>=l[1])&&(xr[0]<=u[0])&&(xr[1]<=u[1])&&(xr[2]>=l[2])&&(xr[2]<=u[2])&&(xr[3]>=l[3])&&(xr[3]<=u[3]);
+                while ((cl==false)||(r1+r2>0.5)){
+                    m=m+1;
+                    if (cl==false){
+                        for (int i=0; i<n; i++){
+                            if (xr[i]<l[i]) xr[i]=l[i]+0.00000001;
+                            if (xr[i]>u[i]) xr[i]=u[i]-0.00000001;
+                        }
+                        /* if (xr[0]<l[0]){xr[0]=l[0]+0.00000001;}
+                        if (xr[1]<l[1]){xr[1]=l[1]+0.00000001;}
+                        if (xr[2]<l[2]){xr[2]=l[2]+0.00000001;}
+                        if (xr[3]<l[3]){xr[3]=l[3]+0.00000001;}
+                        if (xr[0]>u[0]){xr[0]=u[0]-0.00000001;}
+                        if (xr[1]>u[1]){xr[1]=u[1]-0.00000001;}
+                        if (xr[2]>u[2]){xr[2]=u[2]-0.00000001;}
+                        if (xr[3]>u[3]){xr[3]=u[3]-0.00000001;}
+                    }
+                    if (r1+r2>0.5){
+                        for (int j=0; j<n; j++){
+                            xr[j]=(xr[j]+x0[j])/2;
+                        }
+                    }
+                    cl=true;
+                    for (int i=0; i<n; i++){
+                        if (xr[i]<l[i]) cl=false;
+                        if (xr[i]>u[i]) cl=false;
+                    }
+                    if (flag1==true){r1=xr[zz];}
+                    if (flag2==true){r2=xr[yy];}
+                    //cl=(xr[0]>=l[0])&&(xr[1]>=l[1])&&(xr[0]<=u[0])&&(xr[1]<=u[1])&&(xr[2]>=l[2])&&(xr[2]<=u[2])&&(xr[3]>=l[3])&&(xr[3]<=u[3]);
+                }
+                jj=0;
+                if (a[0]==0){c1[0]=k_pasp;} else {c1[0]=xr[jj]; jj=jj+1;}
+                if (a[1]==0){c1[1]=hd_pasp;} else {c1[1]=xr[jj]; jj=jj+1;}
+                if (a[2]==0){c1[2]=hc_pasp;} else {c1[2]=xr[jj]; jj=jj+1;}
+                if (a[3]==0){c1[3]=hs_pasp;} else {c1[3]=xr[jj]; jj=jj+1;}
+                for (int t=0;t<count_of_filters; t++){
+                    I1[t]=detector_current(source,detector,Y[t], c1);
+                    // jTextArea2.append(Double.toString(I1[i]));
+                }
+                /// Ищем сумму квадратов невязок между экспериментом и значениями токов
+                ////с паспортными параметрами
+                Fr=nevjazka(I1, I0);
+                if (Fr>=F[k-1]){
+                    for (int j=0; j<n; j++){
+                        xr[j]=(xr[j]+x0[j])/2;
+                    }
+
+                }
+            }
+            while (Fr>=F[k-1]);
+            F[k-1]=Fr;
+            for (int j=0; j<n; j++){
+                xc[j]=k*xc[j]-c[k-1][j]+xr[j];
+                xc[j]=xc[j]/k;
+                c[k-1][j]=xr[j];
+            }
+            for (int j=0; j<k-1; j++){
+                for (int i=j+1; i<k; i++){
+                    if(F[j]>F[i]){
+                        double F1;
+                        F1=F[j]; F[j]=F[i]; F[i]=F1;
+                        double [] Y1=new double [n];
+                        for (int z=0; z<n; z++){
+                            Y1[z]=c[j][z]; c[j][z]=c[i][z]; c[i][z]=Y1[z];
+                        }
+                    }
+                }
+            }
+
+            S1=0; S2=0; SD=0;
+            for (int i=0; i<k; i++){
+                S1=S1+F[i];
+                S2=S2+F[i]*F[i];
+            }
+            SD=S2-S1*S1/k;
+            SD=SD/k;
+            DM=0;
+            for (int i=0; i<k-1; i++){
+                for (int j=i+1; j<k; j++){
+                    D=0;
+                    for (int z=0; z<n;z++){
+                        D=D+Math.pow(c[i][z]-c[j][z], 2);
+                    }
+                    D=D*D;
+                    if (D>DM) DM=0;
+                }
+            }
+            //jTextArea2.append(Double.toString(SD)+"/");
+            m=m+1;
+            // if (m>60) break;
+        }
+        //while ((SD>0.000001)&&(DM>0.0001));
+        while (SD>0.00001);
+        jj=0;
+        //jTextField6.setText(String.format(Locale.US, "%.2f",k_pasp));
+        */
+        double [] realParams=new double[4];
+        realParams=controller.action();
+        jTextField6.setText(String.format(Locale.ENGLISH, "%.2f",realParams[0]));
+        jTextField7.setText(String.format(Locale.ENGLISH, "%.2f",realParams[1]));
+        jTextField8.setText(String.format(Locale.ENGLISH, "%.2f",realParams[2]));
+        jTextField9.setText(String.format(Locale.ENGLISH, "%.2f",realParams[3]));
+
+        // else {jTextField6.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
+        //if (a[1]==0){jTextField7.setText(String.format(Locale.ENGLISH, "%.2f",hd_pasp));}
+        //else {jTextField7.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
+        //if (a[2]==0){jTextField8.setText(String.format(Locale.ENGLISH, "%.2f",hc_pasp));}
+        //else {jTextField8.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
+        //if (a[3]==0){jTextField9.setText(String.format(Locale.ENGLISH, "%.2f",hs_pasp));}
+        //else {jTextField9.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
+        //  jTextArea2.append(Double.toString(SD)+"/");
+        // jTextArea2.append(Integer.toString(m));
         //.setText("%.4fn"+Double.toString(c[0][0]));
-      //  jTextField6.setText(String.format("%.2f",c[0][0]));
+        //  jTextField6.setText(String.format("%.2f",c[0][0]));
         //jTextField7.setText(String.format("%.2f",c[0][1]));
         //jTextField8.setText(String.format("%.2f",c[0][2]));
         //jTextField9.setText(String.format("%.2f",c[0][3]));
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+
+        JFileChooser fileopen = new JFileChooser();
+        fileopen.setCurrentDirectory(file);
+        //int ret = fileopen.showDialog(null, "Открыть файл");
+        int returnVal = fileopen.showOpenDialog(jButton6);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+
+            File file_xml =fileopen.getSelectedFile();
+            String name_of_file = file_xml.getAbsolutePath();
+            File f = new File(name_of_file);
+
+            try{ DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder builder = factory.newDocumentBuilder();
+                Document document = builder.parse(f);
+                Element root = document.getDocumentElement();
+                // для простоты сразу берем message
+                Element message = (Element) root.getElementsByTagName("count_of_filters").item(0);
+                String textContent = message.getTextContent();
+                jSpinner1.setValue(Integer.parseInt(textContent));
+                Element message1 = (Element) root.getElementsByTagName("type_of_filters").item(0);
+                String textContent1 = message1.getTextContent();
+                int typeOfFilters=0;
+                if (textContent1.equals("silicium")){typeOfFilters=0;}
+                if (textContent1.equals("diamond")){typeOfFilters=1; }
+                jComboBox1.setSelectedIndex(typeOfFilters);
+                jButton2.setVisible(false);
+                jButton2ActionPerformed (evt);
+                ////////////////////////////////////
+                document.getDocumentElement().normalize();
+                NodeList nList = document.getElementsByTagName("filter");
+                for (int temp = 0; temp < nList.getLength(); temp++) {
+                    Node nNode = nList.item(temp);
+                    if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                        Element eElement = (Element) nNode;
+                        filterViewController.setXmlElement(typeOfFilters, eElement, temp, count_of_filters);
+                    }
+                }
+            }catch (Exception e) {
+                e.printStackTrace();
+            }}
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFileChooser fileopen = new JFileChooser();
+        fileopen.setCurrentDirectory(file);
+        //int ret = fileopen.showDialog(null, "Открыть файл");
+        int returnVal = fileopen.showOpenDialog(jButton1);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file1 = fileopen.getSelectedFile();
+            String name_of_file = file1.getAbsolutePath();
+            // What to do with the file, e.g. display it in a TextArea
+            jTextField1.setText(name_of_file);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      createFilterView();
-      
-       /*
-      //  count_of_filters=4;
+        createFilterView();
+
+        /*
+        //  count_of_filters=4;
         //массив панелей для фильтров
         JPanel [] jPan_filter=new JPanel[count_of_filters];
         //jPan_filter=new JPanel[5];
@@ -1655,7 +2001,7 @@ controller.createSource(jTextField1.getText());
             label7[i].setFont(new Font("Verdana", Font.BOLD, 13));
             jPan_filter[i].setSize(250, 250);
             jPan_filter[i].setBorder(BorderFactory.createLineBorder(Color.black));
-                ////////
+            ////////
             button1[i].addActionListener(new GetNameOfFile (field1[i], button1[i], file));
             button1[i+count_of_filters].addActionListener(new GetNameOfFile (field1[i+count_of_filters], button1[i+count_of_filters], file));
             // горизонтальная группа панели фильтров
@@ -1712,471 +2058,49 @@ controller.createSource(jTextField1.getText());
                     .addComponent(label6[i]))
                 //.addGroup(layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup()
-                    .addComponent(label2[i])
-                    .addComponent(label2[i+count_of_filters]))
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(field2[i])
-                    .addComponent(label3[i])
-                    .addComponent(field2[i+count_of_filters])
-                    .addComponent(label3[i+count_of_filters])));
-            jPanel4.add(jPan_filter[i]);
-             //jPanel4.remove(jPan_filter[i]);
-            // scrollPane.revalidate();
-        }/*
-       field1[0].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_CH.txt");
-        field1[1].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_CH.txt");
-        field1[2].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_CH.txt");
-        field1[3].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_CH.txt");
-        field2[0].setText("1.1");
-        field2[1].setText("1.1");
-        field2[2].setText("1.65");
-        field2[3].setText("2.4");
-        field1[4].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Co.txt");
-        field1[5].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Ni.txt");
-        field1[6].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Cu.txt");
-        field1[7].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Mg.txt");
-        field2[4].setText("0.17");
-        field2[5].setText("0.29");
-        field2[6].setText("0.5");
-        field2[7].setText("6.49");
-        field3[0].setText("2.0130");
-        field3[1].setText("1.3656");
-        field3[2].setText("0.6656");
-        field3[3].setText("0.6140");*/
-        //jPanel4.add(scrollPane);
-        jPanel4.repaint();
-        //scrollPane.revalidate();
-        /*  final filter Y[] = new filter[count_of_filters];
-        for (int i=0; i<count_of_filters; i++) {
-            Y[i]=new filter(field1[i].getText(),field1[i+count_of_filters].getText(), Double.parseDouble(field2[i].getText()), Double.parseDouble(field2[i+count_of_filters].getText()),Double.parseDouble(field3[i].getText()) );
-        } */
+                        .addComponent(label2[i])
+                        .addComponent(label2[i+count_of_filters]))
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(field2[i])
+                        .addComponent(label3[i])
+                        .addComponent(field2[i+count_of_filters])
+                        .addComponent(label3[i+count_of_filters])));
+                jPanel4.add(jPan_filter[i]);
+                //jPanel4.remove(jPan_filter[i]);
+                // scrollPane.revalidate();
+            }/*
+            field1[0].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_CH.txt");
+            field1[1].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_CH.txt");
+            field1[2].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_CH.txt");
+            field1[3].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_CH.txt");
+            field2[0].setText("1.1");
+            field2[1].setText("1.1");
+            field2[2].setText("1.65");
+            field2[3].setText("2.4");
+            field1[4].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Co.txt");
+            field1[5].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Ni.txt");
+            field1[6].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Cu.txt");
+            field1[7].setText("C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Mg.txt");
+            field2[4].setText("0.17");
+            field2[5].setText("0.29");
+            field2[6].setText("0.5");
+            field2[7].setText("6.49");
+            field3[0].setText("2.0130");
+            field3[1].setText("1.3656");
+            field3[2].setText("0.6656");
+            field3[3].setText("0.6140");*/
+            //jPanel4.add(scrollPane);
+            jPanel4.repaint();
+            //scrollPane.revalidate();
+            /*  final filter Y[] = new filter[count_of_filters];
+            for (int i=0; i<count_of_filters; i++) {
+                Y[i]=new filter(field1[i].getText(),field1[i+count_of_filters].getText(), Double.parseDouble(field2[i].getText()), Double.parseDouble(field2[i+count_of_filters].getText()),Double.parseDouble(field3[i].getText()) );
+            } */
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        if (jCheckBox1.isSelected()==true) {
-            jLabel16.setVisible(false);
-            jLabel17.setVisible(false);
-            jTextField10.setVisible(false);
-            jTextField13.setVisible(false);
-        }
-        if (jCheckBox1.isSelected()==false) {
-            jLabel16.setVisible(true);
-            jLabel17.setVisible(true);
-            jTextField10.setVisible(true);
-            jTextField13.setVisible(true);
-        }
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-       if (jCheckBox2.isSelected()==true) {
-            jLabel18.setVisible(false);
-            jLabel19.setVisible(false);
-            jTextField12.setVisible(false);
-            jTextField14.setVisible(false);
-        }
-        if (jCheckBox2.isSelected()==false) {
-            jLabel18.setVisible(true);
-            jLabel19.setVisible(true);
-            jTextField12.setVisible(true);
-            jTextField14.setVisible(true);
-        }
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
-
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
-        if (jCheckBox3.isSelected()==true) {
-            jLabel20.setVisible(false);
-            jLabel21.setVisible(false);
-            jTextField11.setVisible(false);
-            jTextField17.setVisible(false);
-        }
-        if (jCheckBox3.isSelected()==false) {
-            jLabel20.setVisible(true);
-            jLabel21.setVisible(true);
-            jTextField11.setVisible(true);
-            jTextField17.setVisible(true);
-        }
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
-
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
-        if (jCheckBox4.isSelected()==true) {
-            jLabel22.setVisible(false);
-            jLabel23.setVisible(false);
-            jTextField16.setVisible(false);
-            jTextField15.setVisible(false);
-        }
-        if (jCheckBox4.isSelected()==false) {
-            jLabel22.setVisible(true);
-            jLabel23.setVisible(true);
-            jTextField16.setVisible(true);
-            jTextField15.setVisible(true);
-        }
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
-public double [][] current (DataFromFile source, Detector detector, filter filter, double []b) {
-       final double e0=1.6e-19;
-       //находим верхний предел интегрирования
-       int n=source.SizeOfFile(source.Name_of_file);
-             double [][] current=new double[n][2]; 
-
-       //находим точки разбиения
-      // double [][] X=new double[][];
-          double  X[][]=source.Data_reading(source.Name_of_file, n);
-          for (int i=0; i<n; i++){
-              current [i][0]=X[i][0];
-          }
-       //первый фильтр
-       int n_f1=filter.SizeOfFile(filter.FName_base);
-       double [][] X_f1=filter.Data_reading(filter.FName_base, n_f1);
-       double [][] A_f1=filter.Material_interpolation(X_f1, n_f1);
-       //второй фильтр
-       int n_f2=filter.SizeOfFile(filter.FName_spray);
-       double [][] X_f2=filter.Data_reading(filter.FName_spray, n_f2);
-       double [][]A_f2=filter.Material_interpolation(X_f2, n_f2);
-       //детектор
-       int n_d1=detector.SizeOfFile(detector.FName_base);
-       double [][]X_d1=detector.Data_reading(detector.FName_base, n_d1);
-       double [][]A_d1=detector.Material_interpolation(X_d1, n_d1);
-       int n_d2=detector.SizeOfFile(detector.FName_spray);
-       double [][]X_d2=detector.Data_reading(detector.FName_spray, n_d2);
-       double [][]A_d2=detector.Material_interpolation(X_d2, n_d2);
-       for (int i=0; i<n;i++){
-        double Sd;
-        Sd=Math.pow(filter.Point_z(X_f1, A_f1, n_f1, X[i][0]), filter.Thick_base)*Math.pow(filter.Point_z(X_f2, A_f2, n_f2, X[i][0]), filter.Thick_spray);
-        double S;
-        S=0.273*b[0]*Math.pow(detector.Point_z(X_d1, A_d1, n_d1, X[i][0]), b[1]);
-        S=S*Math.pow(detector.Point_z(X_d2, A_d2, n_d2, X[i][0]), b[2]);
-        S=S*(1-Math.pow(detector.Point_z(X_d1, A_d1, n_d1, X[i][0]), b[3]));
-       current[i][1]=Sd*S*X[i][1]*X[i][0]; 
-       }
-       return //current;
-               current;
-    }
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-DataFromFile source=new DataFromFile("C:\\Users\\1\\Desktop\\ияф\\filter\\data.txt"); 
-        //создаем объект детектор
-        String Name_base="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Si.txt";
-        String Name_layer="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Al.txt";
-       Detector detector=new Detector(Name_base, Name_layer);
-        final filter []Y = new filter[count_of_filters];   
-       //Начальная инициализация экспериментальными токами
-        for (int i=0;i<count_of_filters; i++){
-        Y[i]=new filter(field1[i].getText(),field1[i+count_of_filters].getText(), Double.parseDouble(field2[i].getText()), Double.parseDouble(field2[i+count_of_filters].getText()),Double.parseDouble(field3[i].getText()) );
-       // I0[i]= Y[i].Exp_value; 
-      // jTextArea2.append(Double.toString(I0[i]));
-        }
-        double [] b=new double[4];
-        b[0]=Double.parseDouble(jTextField6.getText()); 
-        b[1]=Double.parseDouble(jTextField7.getText()); 
-        b[2]=Double.parseDouble(jTextField8.getText()); 
-        b[3]=Double.parseDouble(jTextField9.getText());
-       double [] c= new double[4];
-      for (int i=0; i<4; i++){
-          c[i]=b[i];
-      }
-      // DataFromFile source=new DataFromFile("C:\\Users\\1\\Desktop\\ияф\\filter\\data.txt"); 
-       int n=source.SizeOfFile(source.Name_of_file); 
-      //int n=0;
-      double [][][] Y1= new double [count_of_filters][n][2];
-      for (int i=0; i<count_of_filters; i++){
-          Y1[i]=current (source, detector, Y[i],c);
-          //g.drawString(Double.toString(Y[i][0][0]), 350+i*2, 346+i*2);
-      } 
-      double x_max=0, x_min=0, y_max=0, y_min=0;
-      if (jRadioButton2.isSelected()==true){
-       x_min=Double.parseDouble(jTextField18.getText()); 
-       x_max=Double.parseDouble(jTextField19.getText()); 
-      }
-      if (jRadioButton6.isSelected()==true){
-       y_min=Double.parseDouble(jTextField20.getText()); 
-       y_max=Double.parseDouble(jTextField21.getText()); 
-      }
-      boolean x_log, y_log;
-      if (jRadioButton4.isSelected()==true)
-        x_log=true;
-      else x_log=false;
-      if (jRadioButton8.isSelected()==true)
-        y_log=true;
-      else y_log=false;
-try{
-    jPanel6.removeAll();
-XYLineChart_AWT chart = new XYLineChart_AWT("Графики", "Поглощение", count_of_filters, n,Y1, jPanel6,x_max, x_min, y_max, y_min, x_log, y_log);
-chart.pack( );
-
-//chart.setVisible( true );
-//jPanel6.add(chart);
-  //  jPanel6.getParent().validate();
-//jPanel3.add(chart);
-//RefineryUtilities.centerFrameOnScreen( chart );
-
- // chart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-chart.addWindowListener(new java.awt.event.WindowAdapter() {
-    @Override
-    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-        if (JOptionPane.showConfirmDialog(chart, 
-            "Are you sure to close this window?", "Really Closing?", 
-            JOptionPane.YES_NO_OPTION,
-            JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-           //System.out;
-            System.out.println("actionPerformed()");
-            
-        }
-
-
-    }
-});
-    }catch(Exception e){}; 
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        JFileChooser dialog = new JFileChooser();
-    dialog.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-    dialog.setAcceptAllFileFilterUsed(false);
-   if (dialog.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-       file= dialog.getCurrentDirectory();  
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-    }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFileChooser fileopen = new JFileChooser();
-        fileopen.setCurrentDirectory(file);
-//int ret = fileopen.showDialog(null, "Открыть файл");                
-int returnVal = fileopen.showOpenDialog(jButton1);
-    if (returnVal == JFileChooser.APPROVE_OPTION) {
-        File file1 = fileopen.getSelectedFile();
-      String name_of_file = file1.getAbsolutePath();
-          // What to do with the file, e.g. display it in a TextArea
-          jTextField1.setText(name_of_file);
-    }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-String myString = "k="+jTextField6.getText()+" hd="+jTextField7.getText()+" hc="+jTextField8.getText()+" hs="+jTextField9.getText();
-StringSelection stringSelection = new StringSelection(myString);
-Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
-clpbrd.setContents(stringSelection, null);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
-jButton2.setVisible(true);        // TODO add your handling code here:
+        jButton2.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jSpinner1StateChanged
-
-    private void jRadioButton2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRadioButton2StateChanged
-        if (jRadioButton2.isSelected()==true) {
-          jTextField18.setVisible(true);
-          jTextField19.setVisible(true);
-          jLabel25.setVisible(true);
-          jLabel26.setVisible(true);
-        }
-        else {
-          jTextField18.setVisible(false);
-          jTextField19.setVisible(false);
-          jLabel25.setVisible(false);
-          jLabel26.setVisible(false);   
-        }
-    }//GEN-LAST:event_jRadioButton2StateChanged
-
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        /*if (jRadioButton2.isSelected()==true) {
-          jTextField18.setVisible(true);
-          jTextField19.setVisible(true);
-          jLabel25.setVisible(true);
-          jLabel26.setVisible(true);
-        }
-       if (jRadioButton1.isSelected()==true) {
-          jTextField18.setVisible(false);
-          jTextField19.setVisible(false);
-          jLabel25.setVisible(false);
-          jLabel26.setVisible(false);   
-        }*/
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
-    private void jRadioButton6StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRadioButton6StateChanged
-        if (jRadioButton6.isSelected()==true) {
-          jTextField20.setVisible(true);
-          jTextField21.setVisible(true);
-          jLabel29.setVisible(true);
-          jLabel30.setVisible(true);
-        }
-        else {
-          jTextField20.setVisible(false);
-          jTextField21.setVisible(false);
-          jLabel29.setVisible(false);
-          jLabel30.setVisible(false);   
-        }
-    }//GEN-LAST:event_jRadioButton6StateChanged
-
-    private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton6ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       
-           JFileChooser fileopen = new JFileChooser();
-        fileopen.setCurrentDirectory(file);
-//int ret = fileopen.showDialog(null, "Открыть файл");                
-int returnVal = fileopen.showOpenDialog(jButton6);
-    if (returnVal == JFileChooser.APPROVE_OPTION) {
-        
-        File file_xml =fileopen.getSelectedFile();
-    String name_of_file = file_xml.getAbsolutePath();
-           File f = new File(name_of_file);
-        
-    try{ DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        Document document = builder.parse(f);
-        Element root = document.getDocumentElement();
-        // для простоты сразу берем message
-        Element message = (Element) root.getElementsByTagName("count_of_filters").item(0);
-       String textContent = message.getTextContent(); 
-        jSpinner1.setValue(Integer.parseInt(textContent));
-        Element message1 = (Element) root.getElementsByTagName("type_of_filters").item(0);
-        String textContent1 = message1.getTextContent(); 
-        int typeOfFilters=0;
-        if (textContent1.equals("silicium")){typeOfFilters=0;}
-        if (textContent1.equals("diamond")){typeOfFilters=1; }
-         jComboBox1.setSelectedIndex(typeOfFilters);
-        jButton2.setVisible(false);
-        jButton2ActionPerformed (evt);
-        ////////////////////////////////////
-        document.getDocumentElement().normalize();		
-	NodeList nList = document.getElementsByTagName("filter");
-        for (int temp = 0; temp < nList.getLength(); temp++) {
-		Node nNode = nList.item(temp);				
-		if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-			Element eElement = (Element) nNode;
-                        filterViewController.setXmlElement(typeOfFilters, eElement, temp, count_of_filters);
-		}
-	}
-       }catch (Exception e) {
-	e.printStackTrace();
-    }}
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // по нажатию создается отчет в джаспер и показывается в отдельной форме
-       /* ArrayList<DataBean> dataBeanList = new ArrayList<DataBean>(); 
-        DataBean tempBean = new DataBean(); 
-        tempBean.setk(jTextField6.getText()); 
-        tempBean.sethd(jTextField7.getText()); 
-        tempBean.sethc(jTextField8.getText());
-        tempBean.seths(jTextField9.getText());
-        dataBeanList.add(tempBean);
- Map<String, Object> parameters = new HashMap<String, Object>(); 
-        parameters.put("DATE", new Date());
- String reportName = "C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version10\\JavaApplication7\\src\\report1.jrxml"; // полный путь к отчету
-String pathForSaving = "C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version10\\JavaApplication7\\src\\report.pdf"; 
-//List<Contract> contracstList = _getContracts(); // получаем список договоров с сервера
-JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(dataBeanList); //создаем коллекцию Jasper Report Bean Collection
-/*try{
-     File reportPattern = new File(reportName);
-System.out.print(11);}
-catch(Exception e){System.out.print(1);}
- try{File reportPattern = new File(reportName);    
-     JasperDesign jasperDesign = JRXmlLoader.load(reportPattern);
- System.out.print(22);}
- catch(Exception e){System.out.print(2);}
- try{     
-     File reportPattern = new File(reportName);    
-     JasperDesign jasperDesign = JRXmlLoader.load(reportPattern);
-     JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
- System.out.print(33);}
- catch(Exception e){System.out.print(3);}
- try{     
-     File reportPattern = new File(reportName);    
-     JasperDesign jasperDesign = JRXmlLoader.load(reportPattern);
-     JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-     JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, beanCollectionDataSource);
- System.out.print(44);    
- }
- catch(Exception e){System.out.print(4);}
- try{     
-     File reportPattern = new File(reportName);    
-     JasperDesign jasperDesign = JRXmlLoader.load(reportPattern);
-     JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-     JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, 
-                parameters, beanCollectionDataSource);  
- JasperExportManager.exportReportToPdfFile(jasperPrint, pathForSaving);
- System.out.print(55); }
- catch(Exception e){System.out.print(5);}
-/*JasperPrint jp = JasperFillManager.fillReport(reportName, null, beanCollectionDataSource);
-//JasperPrint jp = JasperFillManager.fillReport(reportName, new HashMap(), beanCollectionDataSource); // заполняем датасет отчета данными из коллекции
-File reportPattern = new File("C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version10\\JavaApplication7\\src\\report1.jrxml");
-JasperDesign jasperDesign = JRXmlLoader.load(reportPattern); 
-JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-JRViewer jv = new JRViewer(jp); // компонент просмотра отчета
-JasperExportManager.exportReportToPdfFile(jp,"C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version10\\JavaApplication7\\src\\report1.pdf"); 
-JFrame reportFrame = new JFrame();
-reportFrame.getContentPane().add(jv);
-reportFrame.validate();
-reportFrame.setVisible(true);}
-catch(Exception e){System.out.print("что-то пошло не так");}*/
-        //Generator rt=new Generator();
-       try { 
-            new Generator().create(); 
-            System.out.println("Генерация отчёта завершена"); 
-        } catch (Exception e) { 
-            System.out.println("Во время генерации возникла ошибка: " + e); 
-        } 
-    }//GEN-LAST:event_jButton7ActionPerformed
-   
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
- ArrayList<SubReportBean> dataBeanList = new ArrayList<SubReportBean>(); 
-        SubReportBean tempBean = new SubReportBean(); 
-        tempBean.setfNamebase(0); 
-        tempBean.setfNamespray(0,1);
-        tempBean.setthickspray(0,1);
-        tempBean.setExpvalue(0);
-        dataBeanList.add(tempBean);
-         SubReportBean tempBean1 = new SubReportBean(); 
-        tempBean1.setfNamebase(0); 
-        tempBean1.setfNamespray(0,1);
-        tempBean1.setthickspray(0,1);
-        tempBean1.setExpvalue(0);
-        dataBeanList.add(tempBean1);
-        JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(dataBeanList); 
-        String pathForPattern1 = "C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version11\\JavaApplication7\\src\\filters1.jrxml"; 
-        //JasperDesign subjasperDesign = JRXmlLoader.load(pathForPattern1); 
-       try{ JasperReport jasperMasterReport = JasperCompileManager.compileReport(pathForPattern1);
-       Map<String, Object> parameters = new HashMap<String, Object>();
-        // parameters.put("subreportParameter", jasperSubReport);
-         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperMasterReport,
-         parameters, beanColDataSource);
-JRViewer jv = new JRViewer(jasperPrint); 
-        JFrame reportFrame = new JFrame();
-        reportFrame.setSize(800, 1000);
-reportFrame.getContentPane().add(jv);
-reportFrame.validate();
-reportFrame.setVisible(true);
-       }
-       catch(JRException e){e.printStackTrace();
-       System.out.print("Ooops!");}
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        ButtonControler bc=new ButtonControler();
-        bc.createButton(jCheckBox5.isSelected(), jPanel10);
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-       String [] baseName=new String [count_of_filters];
-       String [] sprayName=new String [count_of_filters];
-       double [] baseThick=new double[count_of_filters];
-       double [] sprayThick=new double[count_of_filters];
-       double [] expValue=new double[count_of_filters];
-       
-      //FilterViewController dataset= new FilterViewController();
-     // baseName=dataset.createNameBase();
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        DetectorFrame detectorFrame=new DetectorFrame();
-        detectorFrame.setVisible(true);
-        detectorFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        DetectorNew detector=detectorFrame.createDetector();
-        controller.createDetector(detector);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -2221,7 +2145,6 @@ reportFrame.setVisible(true);
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -2229,12 +2152,10 @@ reportFrame.setVisible(true);
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2275,7 +2196,6 @@ reportFrame.setVisible(true);
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2295,9 +2215,9 @@ reportFrame.setVisible(true);
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    protected static javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    protected static javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
@@ -2314,10 +2234,10 @@ reportFrame.setVisible(true);
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    protected static javax.swing.JTextField jTextField6;
-    protected static javax.swing.JTextField jTextField7;
-    protected static javax.swing.JTextField jTextField8;
-    protected static javax.swing.JTextField jTextField9;
+    public javax.swing.JTextField jTextField6;
+    public javax.swing.JTextField jTextField7;
+    public javax.swing.JTextField jTextField8;
+    public javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 int count_of_filters; 
 //private javax.swing.JTextField [] field1;
@@ -2346,4 +2266,5 @@ JLabel [] label7;
 File file;
 Controller controller;
 FilterViewController filterViewController;
+DetectorViewController detectorViewController;
 }

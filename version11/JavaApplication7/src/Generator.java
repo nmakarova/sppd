@@ -18,46 +18,22 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint; 
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource; 
 import net.sf.jasperreports.swing.JRViewer;
-//import org.jdesktop.application;
+
 
  
 
 public class Generator {
+    /*
    String pathForSaving = "C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version11\\JavaApplication7\\src\\TestResult.pdf"; 
-   //String pathForPattern = "C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version11\\JavaApplication7\\src\\report1.jasper"; 
-  String pathForPattern = "C:\\Program Files\\Detector\\bundles\\report1.jasper";  
-  // String subReportFileName="C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version11\\JavaApplication7\\src\\filters.jasper";
-   String subReportFileName="C:\\Program Files\\Detector\\bundles\\filters.jasper";
+   String pathForPattern = "C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version11\\JavaApplication7\\src\\report1.jasper"; 
+  //String pathForPattern = "C:\\Program Files\\Detector\\bundles\\report1.jasper";  
+   String subReportFileName="C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version11\\JavaApplication7\\src\\filters.jasper";
+   //String subReportFileName="C:\\Program Files\\Detector\\bundles\\filters.jasper";
     public void create() throws JRException { 
-        // Create sub report data
-        /*FiltersBean subBean1 = new FiltersBean();
-        subBean1.setFName_base();
-        //subBean1.setThick_base();
-        subBean1.setFName_spray();
-        subBean1.setThick_spray();
-        subBean1.setExp_value();
-        ArrayList<FiltersBean> filtersBeanList = new ArrayList<FiltersBean>();
-        filtersBeanList.add(subBean1);
-        ////////////////////////////////
-        ArrayList<DataBean> dataBeanList = new ArrayList<DataBean>(); 
-        DataBean tempBean = new DataBean(); 
-        tempBean.setk(); 
-        tempBean.sethd(); 
-        tempBean.sethc();
-        tempBean.seths();
-        tempBean.setFiltersBeanList(filtersBeanList);
-        dataBeanList.add(tempBean);*/
-        
-        DataBeanList DataBeanList = new DataBeanList();
+      DataBeanList DataBeanList = new DataBeanList();
       ArrayList<DataBean> dataList = DataBeanList.getDataBeanList();
-        
-        
         ////////////////////////////
         JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(dataList); 
-       // JasperReport jasperMasterReport = JasperCompileManager
-          //  .compileReport(pathForPattern);
-        // JasperReport jasperSubReport = JasperCompileManager
-          //  .compileReport(subReportFileName);
          Map<String, Object> parameters = new HashMap<String, Object>();
          parameters.put("subreportParameter", subReportFileName);
          JasperPrint jasperPrint = JasperFillManager.fillReport(pathForPattern,
@@ -90,7 +66,7 @@ reportFrame.setVisible(true);
 reportFrame.getContentPane().add(jv);
 reportFrame.validate();
 reportFrame.setVisible(true);}
-  */  
+   
     }
    /* public static void main(String[] args) { 
         System.out.println("Начало генерации отчёта"); 

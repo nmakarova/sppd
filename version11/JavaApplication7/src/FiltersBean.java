@@ -19,7 +19,7 @@ public class FiltersBean {
        
         return fNamebase; 
     } 
- 
+ /*
     public void setfNamebase() { 
       fNamebase=NewJFrame.jTextField8.getText();;  
     } 
@@ -48,4 +48,5 @@ public class FiltersBean {
     public void setExpvalue() { 
       expvalue=NewJFrame.jTextField9.getText();;   
     } 
-}
+*/
+     }

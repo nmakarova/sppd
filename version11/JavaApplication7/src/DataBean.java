@@ -22,7 +22,7 @@ public class DataBean {
        
         return k; 
     } 
- 
+ /*
     public void setk() { 
       k=NewJFrame.jTextField6.getText();
         // this.k = k; 
@@ -68,4 +68,5 @@ public class DataBean {
     public void setsRDataSource() { 
       sRDataSource=NewJFrame.jTextField1.getText();
     } 
-}
+*/
+    }

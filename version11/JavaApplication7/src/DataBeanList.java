@@ -14,8 +14,9 @@ import java.util.List;
  * @author 1
  */
 public class DataBeanList {
+    /*
      public ArrayList<DataBean> getDataBeanList() {
-          Object sp=NewJFrame.jSpinner1.getValue();
+         Object sp=NewJFrame.jSpinner1.getValue();
            int nOF=Integer.parseInt(sp.toString());
      ArrayList <SubReportBean> subBeanList= new ArrayList<SubReportBean>();
     
@@ -44,4 +45,5 @@ public class DataBeanList {
       dataBean.setsRDataSource();
       return dataBean;
      }
+    */
 }
