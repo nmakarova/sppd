@@ -5,16 +5,15 @@
  */
 import callibration_model.Controller;
 import callibration_model.DataFromFile;
-import callibration_model.DetectorNew;
 import java.io.*;
 import javax.swing.JOptionPane;
 import java.util.Locale;
 import javax.swing.*;
 import java.math.*;
-import java.util.Random;
 import java.awt.datatransfer.*;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import java.util.Date;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
@@ -43,7 +42,6 @@ public class NewJFrame extends javax.swing.JFrame {
         initComponents();
         jPanel5.setBorder(BorderFactory.createTitledBorder(BorderFactory.createBevelBorder(3), "Паспортные значения"));
         jPanel7.setBorder(BorderFactory.createTitledBorder(BorderFactory.createBevelBorder(3), "Результаты калибровки"));
-       // jButton3.addActionListener(new GetNameOfFile (jTextField1, jButton3)); 
         jTextField2.setText("1");
         jTextField3.setText("0.21");
         jTextField4.setText("0.19");
@@ -972,242 +970,8 @@ public class NewJFrame extends javax.swing.JFrame {
       
     }
          
-    public double nevjazka (double [] I1, double [] I0)  {
-         double T0=0;
-          T0=0;
-        for(int k=0; k<count_of_filters; k++){
-           T0=T0+Math.pow((I1[k]-I0[k]),2);
-        }
-         return T0;
-     } 
-    public double detector_current (DataFromFile source, Detector detector, filter filter, double []b) {
-       final double e0=1.6e-19;
-        double current=0; 
-       //находим верхний предел интегрирования
-       int n=source.SizeOfFile(source.Name_of_file);
-     
-       //находим точки разбиения
-      // double [][] X=new double[][];
-          double  X[][]=source.Data_reading(source.Name_of_file, n);
-       //первый фильтр
-       int n_f1=filter.SizeOfFile(filter.FName_base);
-       double [][] X_f1=filter.Data_reading(filter.FName_base, n_f1);
-       double [][] A_f1=filter.Material_interpolation(X_f1, n_f1);
-       //второй фильтр
-       int n_f2=filter.SizeOfFile(filter.FName_spray);
-       double [][] X_f2=filter.Data_reading(filter.FName_spray, n_f2);
-       double [][]A_f2=filter.Material_interpolation(X_f2, n_f2);
-       //детектор
-       int n_d1=detector.SizeOfFile(detector.FName_base);
-       double [][]X_d1=detector.Data_reading(detector.FName_base, n_d1);
-       double [][]A_d1=detector.Material_interpolation(X_d1, n_d1);
-       int n_d2=detector.SizeOfFile(detector.FName_spray);
-       double [][]X_d2=detector.Data_reading(detector.FName_spray, n_d2);
-       double [][]A_d2=detector.Material_interpolation(X_d2, n_d2);
-       for (int i=0; i<n-1;i++){
-        double Sd;
-        Sd=Math.pow(filter.Point_z(X_f1, A_f1, n_f1, X[i][0]), filter.Thick_base)*Math.pow(filter.Point_z(X_f2, A_f2, n_f2, X[i][0]), filter.Thick_spray);
-        double S;
-        S=0.273*b[0]*Math.pow(detector.Point_z(X_d1, A_d1, n_d1, X[i][0]), b[1]);
-        S=S*Math.pow(detector.Point_z(X_d2, A_d2, n_d2, X[i][0]), b[2]);
-        S=S*(1-Math.pow(detector.Point_z(X_d1, A_d1, n_d1, X[i][0]), b[3]));
-       current=current+Sd*S*X[i][1]*X[i][0]*Math.abs(X[i+1][0]-X[i][0]); 
-       // current=current+X[i][1]*Math.abs(X[i+1][0]-X[i][0]); 
-       }
-       return //current;  
-               current*e0*1000000;
-    }
-    public double [] linear(double[]b, double [] I0, double [] I1,filter [] filter){
-        double [] b1=new double [4];
-        //ищем производные
-        double [][]x=new double[count_of_filters][4];
-       // DataFromFile source1=new DataFromFile(jTextField1.getText());
-        DataFromFile source1=new DataFromFile("C:\\Users\\1\\Desktop\\ияф\\filter\\data.txt"); 
-         String Name_base="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Si.txt";
-        String Name_layer="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Al.txt";
-        Detector detector1=new Detector(Name_base, Name_layer);
-        //находим верхний предел интегрирования
-       int n=source1.SizeOfFile(source1.Name_of_file);
-       //находим точки разбиения
-        double [][]X=source1.Data_reading(source1.Name_of_file, n);
-        //производные по первому параметру
-        for (int i=0; i<count_of_filters; i++){
-         final double e0=1.6e-19;
-        x[i][0]=0; 
-       //первый фильтр
-       int n_f1=filter[i].SizeOfFile(filter[i].FName_base);
-       double  [][]X_f1=filter[i].Data_reading(filter[i].FName_base, n_f1);
-       double [][]A_f1=filter[i].Material_interpolation(X_f1, n_f1);
-       //второй фильтр
-       int n_f2=filter[i].SizeOfFile(filter[i].FName_spray);
-       double [][]X_f2=filter[i].Data_reading(filter[i].FName_spray, n_f2);
-       double [][]A_f2=filter[i].Material_interpolation(X_f2, n_f2);
-       //детектор
-       int n_d1=detector1.SizeOfFile(detector1.FName_base);
-       double [][]X_d1=detector1.Data_reading(detector1.FName_base, n_d1);
-       double [][]A_d1=detector1.Material_interpolation(X_d1, n_d1);
-       int n_d2=detector1.SizeOfFile(detector1.FName_spray);
-       double [][]X_d2=detector1.Data_reading(detector1.FName_spray, n_d2);
-       double [][]A_d2=detector1.Material_interpolation(X_d2, n_d2);
-       for (int j=0; j<n-1;j++){
-        double Sd;
-        Sd=Math.pow(filter[i].Point_z(X_f1, A_f1, n_f1, X[j][0]), filter[i].Thick_base)*Math.pow(filter[i].Point_z(X_f2, A_f2, n_f2, X[j][0]), filter[i].Thick_spray);
-        double S;
-        S=0.273*b[0]*Math.pow(detector1.Point_z(X_d1, A_d1, n_d1, X[j][0]), b[1]);
-        S=S*Math.pow(detector1.Point_z(X_d2, A_d2, n_d2, X[j][0]), b[2]);
-        S=S*(1-Math.pow(detector1.Point_z(X_d1, A_d1, n_d1, X[j][0]), b[3]))/b[0];
-        x[i][0]=x[i][0]+Sd*S*X[j][1]*X[j][0]*Math.abs(X[j+1][0]-X[j][0])*e0*1000000;   
-       } 
-        }
-        //производные по второму, третьему и четвертому параметру
-        for (int i=0; i<count_of_filters; i++){
-         final double e0=1.6e-19;
-        x[i][1]=0; x[i][2]=0;x[i][3]=0;
-       //находим верхний предел интегрирования
-      // int n=source1.SizeOfFile(source1.Name_of_file);
-       //находим точки разбиения
-       //double [][]X=source1.Data_reading(source1.Name_of_file, n);
-       //первый фильтр
-       int n_f1=filter[i].SizeOfFile(filter[i].FName_base);
-       double  [][]X_f1=filter[i].Data_reading(filter[i].FName_base, n_f1);
-       double [][]A_f1=filter[i].Material_interpolation(X_f1, n_f1);
-       //второй фильтр
-       int n_f2=filter[i].SizeOfFile(filter[i].FName_spray);
-       double [][]X_f2=filter[i].Data_reading(filter[i].FName_spray, n_f2);
-       double [][]A_f2=filter[i].Material_interpolation(X_f2, n_f2);
-       //детектор
-       int n_d1=detector1.SizeOfFile(detector1.FName_base);
-       double [][]X_d1=detector1.Data_reading(detector1.FName_base, n_d1);
-       double [][]A_d1=detector1.Material_interpolation(X_d1, n_d1);
-       int n_d2=detector1.SizeOfFile(detector1.FName_spray);
-       double [][]X_d2=detector1.Data_reading(detector1.FName_spray, n_d2);
-       double [][]A_d2=detector1.Material_interpolation(X_d2, n_d2);
-       for (int j=0; j<n-1;j++){
-        double Sd;
-        Sd=Math.pow(filter[i].Point_z(X_f1, A_f1, n_f1, X[j][0]), filter[i].Thick_base)*Math.pow(filter[i].Point_z(X_f2, A_f2, n_f2, X[j][0]), filter[i].Thick_spray);
-        double S;
-        double z1=detector1.Point_z(X_d1, A_d1, n_d1, X[j][0]);
-        double z2=detector1.Point_z(X_d2, A_d2, n_d2, X[j][0]);
-        S=0.273*b[0]*Math.pow(z1, b[1]);
-        S=S*Math.pow(z2, b[2]);
-        S=S*(1-Math.pow(z1, b[3]));
-        if ((z1==0)||(z2==0)){
-            x[i][1]=x[i][1];x[i][2]=x[i][2];x[i][3]=x[i][3];}
-        else{
-            x[i][1]=x[i][1]+Sd*S*X[j][0]*X[j][1]*Math.abs(X[j+1][0]-X[j][0])*e0*Math.log(z1)*1000000;   
-            x[i][2]=x[i][2]+Sd*S*X[j][0]*X[j][1]*Math.abs(X[j+1][0]-X[j][0])*e0*Math.log(z2)*1000000;
-            S=S*Math.log(z1);
-            S=S*Math.pow(detector1.Point_z(X_d1, A_d1, n_d1, X[j][0]), b[3]);
-            S=-S/(1-Math.pow(detector1.Point_z(X_d1, A_d1, n_d1, X[j][0]), b[3]));
-            x[i][3]=x[i][3]+Sd*S*X[j][0]*X[j][1]*Math.abs(X[j+1][0]-X[j][0])*e0*1000000;
-        } 
-        } 
-        }
-        for (int i=0; i<4; i++){
-            for (int j=0; j<4; j++){
-            //  jTextArea1.append(Double.toString(x[i][j]));   
-            }
-        }
-            
-
-        // решаем систему методом Гаусса
-        
-            //Переводим матрицу коэффициентов в класс BigDecimal
-        BigDecimal [][]a=new BigDecimal[4][4];
-        for (int i=0; i<4; i++){
-            for (int j=0; j<4; j++){
-                a[i][j]=new BigDecimal (x[i][j]);
-            }
-        }
-        
-    //double []c=new double[4];
-    double []b2=new double[count_of_filters];
-    for (int i=0; i<count_of_filters;i++){
-        b2[i]=I1[i]-I0[i];
-       // jTextArea1.append(Double.toString(b2[i]));
-    }
-    BigDecimal [] b3=new BigDecimal[count_of_filters];
-    for (int i=0; i<count_of_filters;i++){
-        b3[i]=new BigDecimal(b2[i]);
-    }
-    BigDecimal [] c = new BigDecimal[4];
-  // for (int i=0; i<4; i++){
- 
-    //}
-    // Прямой ход метода Гаусса
-    BigDecimal m=new BigDecimal("0");
-   // jTextArea1.append(a[0][1].toString());
-   // jTextArea1.append(a[3][3].toString());
-   // m=a[0][1].divide(a[1][1],BigDecimal.ROUND_HALF_EVEN);
-   // jTextArea1.append(m.toString());
-    m=BigDecimal.ZERO;
-  for (int k=0; k<3; k++){
-      //модифицируем, чтобы избавиться от нуля
-      BigDecimal max= new BigDecimal("0");
-      max=a[0][k];
-      int mmax=0;
-      for (int m1=k; m1<3; m1++){
-          a[m1+1][k]=a[m1+1][k].abs();
-          if (a[m1+1][k].max(a[m1][k].abs())==a[m1+1][k]){
-             max=a[m1+1][k];
-             mmax=m1+1;
-          }
-      }
-      BigDecimal tmp=new BigDecimal("0");
-      tmp=b3[k];
-      b3[k]=b3[mmax];
-      b3[mmax]=tmp;
-      for (int j=k; j<4; j++){
-          tmp=a[k][j];
-          a[k][j]=a[mmax][j];
-          a[mmax][j]=tmp;
-      }
-     for (int i=k+1; i<4; i++){
-        m=a[0][1].divide(a[k][k],BigDecimal.ROUND_HALF_EVEN);
-      // m=x[i][k]/x[k][k];//тут почему-то получается ноль!Ответ: точности не хватает
-         //jTextArea1.append(Double.toString(m));
-      // b2[i]=b2[i]-m*b2[k];
-         b3[i]=b3[i].subtract(m.multiply(b3[k]));
-       for (int j=k+1; j<4; j++){
-          // x[i][j]=x[i][j]-m*x[k][j];
-           a[i][j]=a[i][j].subtract(m.multiply(a[k][j]));
-       }
-     } 
-  }
-  //обратный ход метода Гаусса
- // jTextArea1.append(Double.toString(x[3][3]));
-  //c[3]=b2[3]/x[3][3];
-  c[3]=b3[3].divide(a[3][3],BigDecimal.ROUND_DOWN);
- // jTextArea1.append(Double.toString(c[3]));
-  for (int k=2;k>=0;k--){
-      //double r=0;
-      BigDecimal r=new BigDecimal("0");
-      for (int j=k+1; j<4; j++){
-        //  r=r+x[k][j]*c[j];
-          r=r.add(a[k][j].multiply(c[j]));
-      }
-     // c[k]=(b2[k]-r)/x[k][k];
-      c[k]=b3[k].subtract(r);
-      c[k]=c[k].divide(a[k][k],BigDecimal.ROUND_DOWN);
-  }
-  for (int i=0; i<4; i++){
-      //jTextArea1.append(Double.toString(c[i]));
-  }
-      
-    //находим искомые параметры
-  BigDecimal []z=new BigDecimal [4];
-  BigDecimal [] z1=new BigDecimal [4];
-  for (int i=0; i<4; i++){
-      z[i]=new BigDecimal(b[i]);
-      z1[i]=new BigDecimal ("0");
-  }
-    for (int i=0; i<4; i++){
-        //b1[i]=c[i]+b[i];
-        z1[i]=c[i].add(z[i]);
-        b1[i]=z1[i].doubleValue();
-    }
-        return b1;
-    }public double [][] current (DataFromFile source, Detector detector, filter filter, double []b) {
+    
+    public double [][] current (DataFromFile source, Detector detector, filter filter, double []b) {
        final double e0=1.6e-19;
        //находим верхний предел интегрирования
        int n=source.SizeOfFile(source.Name_of_file);
@@ -1256,8 +1020,6 @@ public class NewJFrame extends javax.swing.JFrame {
     }   
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
     detectorViewController.setDetectorView();
-// DetectorNew detector=detectorFrame.createDetector();
-       // controller.createDetector(detector);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
@@ -1375,13 +1137,13 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         ArrayList<SubReportBean> dataBeanList = new ArrayList<SubReportBean>();
-        SubReportBean tempBean = new SubReportBean();
+        SubReportBean tempBean = new SubReportBean(controller);
         tempBean.setfNamebase(0);
         tempBean.setfNamespray(0,1);
         tempBean.setthickspray(0,1);
         tempBean.setExpvalue(0);
         dataBeanList.add(tempBean);
-        SubReportBean tempBean1 = new SubReportBean();
+        SubReportBean tempBean1 = new SubReportBean(controller);
         tempBean1.setfNamebase(0);
         tempBean1.setfNamespray(0,1);
         tempBean1.setthickspray(0,1);
@@ -1410,10 +1172,10 @@ public class NewJFrame extends javax.swing.JFrame {
         // по нажатию создается отчет в джаспер и показывается в отдельной форме
         /* ArrayList<DataBean> dataBeanList = new ArrayList<DataBean>();
         DataBean tempBean = new DataBean();
-        tempBean.setk(jTextField6.getText());
-        tempBean.sethd(jTextField7.getText());
-        tempBean.sethc(jTextField8.getText());
-        tempBean.seths(jTextField9.getText());
+        tempBean.setk(controller.getDetector());
+        tempBean.sethd(controller.getDetector());
+        tempBean.sethc(controller.getDetector());
+        tempBean.seths(controller.getDetector());
         dataBeanList.add(tempBean);
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("DATE", new Date());
@@ -1466,7 +1228,7 @@ public class NewJFrame extends javax.swing.JFrame {
         catch(Exception e){System.out.print("что-то пошло не так");}*/
         //Generator rt=new Generator();
         try {
-           // new Generator().create();
+           new Generator(controller).create();
             System.out.println("Генерация отчёта завершена");
         } catch (Exception e) {
             System.out.println("Во время генерации возникла ошибка: " + e);
@@ -1554,28 +1316,15 @@ public class NewJFrame extends javax.swing.JFrame {
         String detectorContact=detectorViewController.getContactName();
         int detectorType=detectorViewController.getDetectorType();
         controller.createDetector(detectorBase, detectorContact, detectorType);
-        //DataFromFile source=new DataFromFile(jTextField1.getText());
-        //DataFromFile source=new DataFromFile("C:\\Users\\1\\Desktop\\ияф\\filter\\data.txt");
-        //создаем объект детектор
-        //      String Name_base="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Si.txt";
-        //    String Name_layer="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Al.txt";
-        // Detector detector=new Detector(Name_base, Name_layer);
-
+        
         //считываем паспортные значения
         double [] paspParam=new double [4];
-        //final    double k_pasp, hd_pasp, hc_pasp, hs_pasp;
         paspParam[0]=Double.parseDouble(jTextField2.getText());
         paspParam[1]=Double.parseDouble(jTextField3.getText());
         paspParam[2]=Double.parseDouble(jTextField4.getText());
         paspParam[3]=Double.parseDouble(jTextField5.getText());
         controller.setPaspParam(paspParam);
-        //k_pasp=1;
-        //hd_pasp=0.21;
-        //hc_pasp=0.19;
-        //hs_pasp=50;
-        // начальная точка
-        //double [] x1=new double[4];
-        //x1[0]=k_pasp; x1[1]=hd_pasp; x1[2]=hc_pasp; x1[3]=hs_pasp;
+       
         //матрица нижних ограничений
         double [] l1=new double [4];
         l1[0]=Double.parseDouble(jTextField13.getText());
@@ -1628,261 +1377,12 @@ public class NewJFrame extends javax.swing.JFrame {
             thickness=filterViewController.createThickness(y, count_of_filters);
         }
         controller.createCollection(y, count_of_filters, nameOfLayer, thickness, expValue);
-        /*
-        // создаемм объекты класса filter
-        final filter Y[] = new filter[count_of_filters];
-        // create_filters(count_of_filters);
-        // объявления массивов для токов детектора
-        double [] I0= new double [count_of_filters];
-        double [] I1= new double [count_of_filters];
-        //Начальная инициализация экспериментальными токами
-        for (int i=0;i<count_of_filters; i++){
-            Y[i]=new filter(field1[i].getText(),field1[i+count_of_filters].getText(), Double.parseDouble(field2[i].getText()), Double.parseDouble(field2[i+count_of_filters].getText()),Double.parseDouble(field3[i].getText()) );
-            I0[i]= Y[i].Exp_value;
-            // jTextArea2.append(Double.toString(I0[i]));
-        }
-        double [] l=new double [n];
-        double [] u=new double [n];
-        int k=2*n;
-        double [][] c=new double [k][n];
-        double [] xc=new double [n];
-        int jj=0, zz=0, yy=0;
-        boolean flag1=false; boolean flag2=false;
-        double r1=hd_pasp; double r2=hc_pasp; //переменные для неявного ограничения r1+r2<=0.5
-        for (int i=0;i<4; i++){
-            if (a[i]==1) {
-                c[0][jj]=x1[i];
-                l[jj]=l1[i];
-                u[jj]=u1[i];
-                if (i==1){
-                    flag1=true;
-                    r1=x1[i];
-                    zz=jj;
-                }
-                if (i==2){
-                    flag2=true;
-                    r2=x1[i];
-                    yy=jj;
-                }
-                jj=jj+1;
-            }
-        }
-        //инициализируем начальную точку комплекса
-        for (int j=0; j<n; j++){
-            xc[j]=c[0][j];
-        }
-        double [] c1=new double [4];
-        jj=0;
-        if (a[0]==0){c1[0]=k_pasp;} else {c1[0]=c[0][jj]; jj=jj+1;}
-        if (a[1]==0){c1[1]=hd_pasp;} else {c1[1]=c[0][jj]; jj=jj+1;}
-        if (a[2]==0){c1[2]=hc_pasp;} else {c1[2]=c[0][jj]; jj=jj+1;}
-        if (a[3]==0){c1[3]=hs_pasp;} else {c1[3]=c[0][jj]; jj=jj+1;}
-        Random r=new Random();
-        double [] F=new double[k];
-        for (int t=0;t<count_of_filters; t++){
-            I1[t]=detector_current(source,detector,Y[t], c1);
-            // jTextArea2.append(Double.toString(I1[i]));
-        }
-        /// Ищем сумму квадратов невязок между экспериментом и значениями токов
-        ////с паспортными параметрами
-        F[0]=nevjazka(I1, I0);
-        double v=0.1;
-        for (int i=1; i<k; i++){
-            v=v+0.1;
-            for (int j=0; j<n; j++){
-                c[i][j]=l[j]+v*(u[j]-l[j]);
-                // jTextArea1.append(Double.toString(c[i][j])+"/");
-            }
-            if (flag1==true){r1=c[i][zz];}
-            if (flag2==true){r2=c[i][yy];}
-            while (r1+r2>0.5){
-                for (int j=0;j<n;j++){
-                    c[i][j]=(c[i][j]+xc[j])/2;
-                }
-                if (flag1==true){r1=c[i][zz];}
-                if (flag2==true){r2=c[i][yy];}
-            }
-            for (int j=0;j<n;j++){
-                xc[j]=((i)*xc[j]+c[i][j])/(i+1);
-            }
-            jj=0;
-            if (a[0]==0){c1[0]=k_pasp;} else {c1[0]=c[i][jj]; jj=jj+1;}
-            if (a[1]==0){c1[1]=hd_pasp;} else {c1[1]=c[i][jj]; jj=jj+1;}
-            if (a[2]==0){c1[2]=hc_pasp;} else {c1[2]=c[i][jj]; jj=jj+1;}
-            if (a[3]==0){c1[3]=hs_pasp;} else {c1[3]=c[i][jj]; jj=jj+1;}
-            for (int t=0;t<count_of_filters; t++){
-                I1[t]=detector_current(source,detector,Y[t], c1);
-                // jTextArea2.append(Double.toString(I1[i]));
-            }
-            /// Ищем сумму квадратов невязок между экспериментом и значениями токов
-            ////с паспортными параметрами
-            F[i]=nevjazka(I1, I0);
-            //jTextArea1.append(Double.toString(F[i])+"/");
-        }
-
-        for (int j=0; j<k-1; j++){
-            for (int i=j+1; i<k; i++){
-                if(F[j]>F[i]){
-                    double F1;
-                    F1=F[j]; F[j]=F[i]; F[i]=F1;
-                    double [] Y1=new double [n];
-                    for (int z=0; z<n; z++){
-                        Y1[z]=c[j][z]; c[j][z]=c[i][z]; c[i][z]=Y1[z];
-                    }
-                }
-            }
-        }
-
-        double FM=F[0];
-        double A=1.3;
-        double [] x0=new double [n];
-        double [] xh=new double [n];
-        double [] xr=new double [n];
-        double Fr;
-        boolean cl=true;
-        double S1; double S2; double D; double DM; double SD;
-        S1=0; S2=0; SD=0;
-        for (int i=0; i<k; i++){
-            S1=S1+F[i];
-            S2=S2+F[i]*F[i];
-        }
-        SD=S2-S1*S1/k;
-        SD=SD/k;
-        //jTextArea1.append(Double.toString(SD)+"/");
-        int m=0;
-        do{
-            for (int j=0; j<n; j++){
-                xh[j]=c[k-1][j];
-                x0[j]=(k*xc[j]-xh[j])/(k-1);
-            }
-            for (int j=0; j<n; j++){
-                xr[j]=(1+A)*x0[j]-A*xh[j];
-            }
-            do{
-                for (int i=0; i<n; i++){
-                    if (xr[i]<l[i]) cl=false;
-                    if (xr[i]>u[i]) cl=false;
-                }
-                if (flag1==true){r1=xr[zz];}
-                if (flag2==true){r2=xr[yy];}
-                //cl=(xr[0]>=l[0])&&(xr[1]>=l[1])&&(xr[0]<=u[0])&&(xr[1]<=u[1])&&(xr[2]>=l[2])&&(xr[2]<=u[2])&&(xr[3]>=l[3])&&(xr[3]<=u[3]);
-                while ((cl==false)||(r1+r2>0.5)){
-                    m=m+1;
-                    if (cl==false){
-                        for (int i=0; i<n; i++){
-                            if (xr[i]<l[i]) xr[i]=l[i]+0.00000001;
-                            if (xr[i]>u[i]) xr[i]=u[i]-0.00000001;
-                        }
-                        /* if (xr[0]<l[0]){xr[0]=l[0]+0.00000001;}
-                        if (xr[1]<l[1]){xr[1]=l[1]+0.00000001;}
-                        if (xr[2]<l[2]){xr[2]=l[2]+0.00000001;}
-                        if (xr[3]<l[3]){xr[3]=l[3]+0.00000001;}
-                        if (xr[0]>u[0]){xr[0]=u[0]-0.00000001;}
-                        if (xr[1]>u[1]){xr[1]=u[1]-0.00000001;}
-                        if (xr[2]>u[2]){xr[2]=u[2]-0.00000001;}
-                        if (xr[3]>u[3]){xr[3]=u[3]-0.00000001;}
-                    }
-                    if (r1+r2>0.5){
-                        for (int j=0; j<n; j++){
-                            xr[j]=(xr[j]+x0[j])/2;
-                        }
-                    }
-                    cl=true;
-                    for (int i=0; i<n; i++){
-                        if (xr[i]<l[i]) cl=false;
-                        if (xr[i]>u[i]) cl=false;
-                    }
-                    if (flag1==true){r1=xr[zz];}
-                    if (flag2==true){r2=xr[yy];}
-                    //cl=(xr[0]>=l[0])&&(xr[1]>=l[1])&&(xr[0]<=u[0])&&(xr[1]<=u[1])&&(xr[2]>=l[2])&&(xr[2]<=u[2])&&(xr[3]>=l[3])&&(xr[3]<=u[3]);
-                }
-                jj=0;
-                if (a[0]==0){c1[0]=k_pasp;} else {c1[0]=xr[jj]; jj=jj+1;}
-                if (a[1]==0){c1[1]=hd_pasp;} else {c1[1]=xr[jj]; jj=jj+1;}
-                if (a[2]==0){c1[2]=hc_pasp;} else {c1[2]=xr[jj]; jj=jj+1;}
-                if (a[3]==0){c1[3]=hs_pasp;} else {c1[3]=xr[jj]; jj=jj+1;}
-                for (int t=0;t<count_of_filters; t++){
-                    I1[t]=detector_current(source,detector,Y[t], c1);
-                    // jTextArea2.append(Double.toString(I1[i]));
-                }
-                /// Ищем сумму квадратов невязок между экспериментом и значениями токов
-                ////с паспортными параметрами
-                Fr=nevjazka(I1, I0);
-                if (Fr>=F[k-1]){
-                    for (int j=0; j<n; j++){
-                        xr[j]=(xr[j]+x0[j])/2;
-                    }
-
-                }
-            }
-            while (Fr>=F[k-1]);
-            F[k-1]=Fr;
-            for (int j=0; j<n; j++){
-                xc[j]=k*xc[j]-c[k-1][j]+xr[j];
-                xc[j]=xc[j]/k;
-                c[k-1][j]=xr[j];
-            }
-            for (int j=0; j<k-1; j++){
-                for (int i=j+1; i<k; i++){
-                    if(F[j]>F[i]){
-                        double F1;
-                        F1=F[j]; F[j]=F[i]; F[i]=F1;
-                        double [] Y1=new double [n];
-                        for (int z=0; z<n; z++){
-                            Y1[z]=c[j][z]; c[j][z]=c[i][z]; c[i][z]=Y1[z];
-                        }
-                    }
-                }
-            }
-
-            S1=0; S2=0; SD=0;
-            for (int i=0; i<k; i++){
-                S1=S1+F[i];
-                S2=S2+F[i]*F[i];
-            }
-            SD=S2-S1*S1/k;
-            SD=SD/k;
-            DM=0;
-            for (int i=0; i<k-1; i++){
-                for (int j=i+1; j<k; j++){
-                    D=0;
-                    for (int z=0; z<n;z++){
-                        D=D+Math.pow(c[i][z]-c[j][z], 2);
-                    }
-                    D=D*D;
-                    if (D>DM) DM=0;
-                }
-            }
-            //jTextArea2.append(Double.toString(SD)+"/");
-            m=m+1;
-            // if (m>60) break;
-        }
-        //while ((SD>0.000001)&&(DM>0.0001));
-        while (SD>0.00001);
-        jj=0;
-        //jTextField6.setText(String.format(Locale.US, "%.2f",k_pasp));
-        */
         double [] realParams=new double[4];
         realParams=controller.action();
         jTextField6.setText(String.format(Locale.ENGLISH, "%.2f",realParams[0]));
         jTextField7.setText(String.format(Locale.ENGLISH, "%.2f",realParams[1]));
         jTextField8.setText(String.format(Locale.ENGLISH, "%.2f",realParams[2]));
         jTextField9.setText(String.format(Locale.ENGLISH, "%.2f",realParams[3]));
-
-        // else {jTextField6.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
-        //if (a[1]==0){jTextField7.setText(String.format(Locale.ENGLISH, "%.2f",hd_pasp));}
-        //else {jTextField7.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
-        //if (a[2]==0){jTextField8.setText(String.format(Locale.ENGLISH, "%.2f",hc_pasp));}
-        //else {jTextField8.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
-        //if (a[3]==0){jTextField9.setText(String.format(Locale.ENGLISH, "%.2f",hs_pasp));}
-        //else {jTextField9.setText(String.format(Locale.ENGLISH, "%.2f",c[0][jj])); jj=jj+1;}
-        //  jTextArea2.append(Double.toString(SD)+"/");
-        // jTextArea2.append(Integer.toString(m));
-        //.setText("%.4fn"+Double.toString(c[0][0]));
-        //  jTextField6.setText(String.format("%.2f",c[0][0]));
-        //jTextField7.setText(String.format("%.2f",c[0][1]));
-        //jTextField8.setText(String.format("%.2f",c[0][2]));
-        //jTextField9.setText(String.format("%.2f",c[0][3]));
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

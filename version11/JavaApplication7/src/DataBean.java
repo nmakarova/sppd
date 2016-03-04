@@ -1,4 +1,6 @@
 
+import callibration_model.DataFromFile;
+import callibration_model.DetectorNew;
 import java.util.List;
 
 /*
@@ -22,18 +24,19 @@ public class DataBean {
        
         return k; 
     } 
- /*
-    public void setk() { 
-      k=NewJFrame.jTextField6.getText();
-        // this.k = k; 
+ 
+    public void setk(DetectorNew detector) { 
+      double [] realparam=detector.getRealParam();
+      k=Double.toString(realparam[0]);
     } 
  
     public String gethc() { 
        
         return hc; 
     } 
-    public void sethc() { 
-        hc=NewJFrame.jTextField8.getText(); 
+    public void sethc(DetectorNew detector) { 
+        double [] realparam=detector.getRealParam();
+      hc=Double.toString(realparam[2]);
     } 
     
   public String gethd() { 
@@ -41,8 +44,9 @@ public class DataBean {
         return hd; 
     } 
  
-    public void sethd() { 
-        hd=NewJFrame.jTextField7.getText();  
+    public void sethd(DetectorNew detector) { 
+       double [] realparam=detector.getRealParam();
+      hd=Double.toString(realparam[1]);
     } 
     
      public String geths() { 
@@ -50,8 +54,9 @@ public class DataBean {
         return hs; 
     } 
  
-    public void seths() { 
-        hs=NewJFrame.jTextField9.getText(); 
+    public void seths(DetectorNew detector) { 
+       double [] realparam=detector.getRealParam();
+      hs=Double.toString(realparam[3]);
     } 
    public List<SubReportBean> getFiltersBeanList() {
       return filtersBeanList;
@@ -65,8 +70,8 @@ public class DataBean {
         return sRDataSource; 
     } 
  
-    public void setsRDataSource() { 
-      sRDataSource=NewJFrame.jTextField1.getText();
+    public void setsRDataSource(DataFromFile source) { 
+      sRDataSource=source.Name_of_file;
     } 
-*/
+
     }

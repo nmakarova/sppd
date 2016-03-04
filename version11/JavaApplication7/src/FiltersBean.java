@@ -10,7 +10,7 @@
  */
 public class FiltersBean {
     private String fNamebase; 
-   // private String Thick_base; 
+    private String Thick_base; 
     private String fNamespray;
     private String thickspray;  
     private String expvalue;
