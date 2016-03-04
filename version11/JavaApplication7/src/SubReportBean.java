@@ -1,3 +1,7 @@
+
+import callibration_model.Controller;
+import callibration_model.FilterWithCoating;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,27 +19,33 @@ public class SubReportBean {
     private String thickspray;  
     private String expvalue;
     private Integer countOfFilters;
+    Controller controller;
+
+    public SubReportBean(Controller controller) {
+        this.controller = controller;
+    }
     
      public String getfNamebase() {    
         return fNamebase; 
     } 
  
     public void setfNamebase(int i) { 
-      fNamebase=NewJFrame.field1[i].getText(); 
+     fNamebase=controller.getExperiment().get(i).getMaterialOfBase().Name_of_file;
     } 
     public String getthickbase() { 
         return thickbase; 
     } 
  
     public void setthickbase(int i) { 
-      thickbase=NewJFrame.field2[i].getText();  
+      thickbase=Double.toString(controller.getExperiment().get(i).getBaseThickness());  
     } 
      public String getfNamespray() {   
         return fNamespray; 
     } 
  
     public void setfNamespray(int i, int Cof) { 
-      fNamespray=NewJFrame.field1[i+Cof].getText();
+      FilterWithCoating filter=(FilterWithCoating)controller.getExperiment().get(i);
+        fNamespray=filter.getCoatingLayer().Name_of_file;
          
     } 
      public String getthickspray() {   
@@ -43,14 +53,15 @@ public class SubReportBean {
     } 
  
     public void setthickspray(int i, int Cof) { 
-      thickspray=NewJFrame.field2[i+Cof].getText();  
+      FilterWithCoating filter=(FilterWithCoating)controller.getExperiment().get(i);
+        thickspray=Double.toString(filter.getCoatingThickness());   
     } 
     public String getExpvalue() {   
         return expvalue; 
     } 
  
     public void setExpvalue(int i) { 
-      expvalue=NewJFrame.field3[i].getText();
+      expvalue=Double.toString(controller.getExperiment().getExperimentalValue(i));
          
     } 
      public Integer getcountOfFilters() { 
