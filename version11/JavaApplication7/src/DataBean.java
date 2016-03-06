@@ -19,6 +19,7 @@ public class DataBean {
     private String hd; 
     private String hs; 
     private List<SubReportBean> filtersBeanList;
+    private List<SubReportBeanWithoutCoating> filtersBeanList1;
     private String sRDataSource; 
     public String getk() { 
        
@@ -64,6 +65,13 @@ public class DataBean {
 
    public void setFiltersBeanList(List<SubReportBean> filtersBeanList) {
       this.filtersBeanList = filtersBeanList;
+   } 
+   public List<SubReportBeanWithoutCoating> getFiltersBeanListWithoutCoating() {
+      return filtersBeanList1;
+   }
+
+   public void setFiltersBeanListWithoutCoating(List<SubReportBeanWithoutCoating> filtersBeanList1) {
+      this.filtersBeanList1 = filtersBeanList1;
    } 
     public String getsRDataSource() { 
        

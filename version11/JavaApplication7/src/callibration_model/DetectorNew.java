@@ -29,6 +29,18 @@ public class DetectorNew {
       else idealDiod=DIAMOND_DETECTOR;
     }
 
+    public double getIdealDiod() {
+        return idealDiod;
+    }
+
+    public Material getContact() {
+        return contact;
+    }
+
+    public Material getBase() {
+        return base;
+    }
+
     public double[] getPaspParam() {
         return paspParam;
     }

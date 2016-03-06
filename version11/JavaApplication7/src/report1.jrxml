@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.0.0.final using JasperReports Library version 6.0.0  -->
+<!-- 2016-03-04T17:50:39 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="654df4d9-1df3-4e7e-a5c7-7b743e894371">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
@@ -120,6 +122,12 @@ against synchrotron radiation]]></text>
 				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource
                  ($F{filtersBeanList})]]></dataSourceExpression>
 				<subreportExpression><![CDATA["C:\\Program Files\\Detector\\bundles\\filters.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="1" y="192" width="550" height="400" uuid="927033ba-750f-4d38-a622-e2001d134c9a"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource
+                 ($F{filtersBeanList})]]></dataSourceExpression>
+				<subreportExpression><![CDATA["C:\\Program Files\\Detector\\bundles\\filterswithoutcoating11.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
 				<reportElement mode="Opaque" x="1" y="133" width="554" height="20" backcolor="#FFFFCC" uuid="9d78948b-e994-4ef5-8f2f-c6b1403c5afd"/>

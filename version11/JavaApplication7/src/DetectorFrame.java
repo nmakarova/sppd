@@ -18,10 +18,13 @@ public class DetectorFrame extends javax.swing.JFrame {
 String baseName;
 String contactName;
 int detectorType;
+File currentDirectory;
     /**
      * Creates new form DetectorFrame
+     * @param currentDirectory
      */
-    public DetectorFrame() {
+    public DetectorFrame(File currentDirectory) {
+       this.currentDirectory = currentDirectory;
         initComponents();       
     }
 
@@ -189,10 +192,8 @@ int detectorType;
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       File file=new File(""); 
-        JFileChooser fileopen = new JFileChooser();
-        fileopen.setCurrentDirectory(file);
-//int ret = fileopen.showDialog(null, "Открыть файл");                
+      JFileChooser fileopen = new JFileChooser();
+        fileopen.setCurrentDirectory(currentDirectory);           
 int returnVal = fileopen.showOpenDialog(jButton1);
     if (returnVal == JFileChooser.APPROVE_OPTION) {
         File file1 = fileopen.getSelectedFile();
@@ -203,9 +204,8 @@ int returnVal = fileopen.showOpenDialog(jButton1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        File file=new File(""); 
         JFileChooser fileopen = new JFileChooser();
-        fileopen.setCurrentDirectory(file);
+        fileopen.setCurrentDirectory(currentDirectory);     
 //int ret = fileopen.showDialog(null, "Открыть файл");                
 int returnVal = fileopen.showOpenDialog(jButton2);
     if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -228,8 +228,9 @@ public DetectorNew createDetector(){
 }
     /**
      * @param args the command line arguments
+     * @param currentDirectory the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[],File currentDirectory) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -256,7 +257,7 @@ public DetectorNew createDetector(){
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DetectorFrame().setVisible(true);
+                new DetectorFrame(currentDirectory).setVisible(true);
                
 
             }

@@ -9,11 +9,9 @@ import java.io.*;
 import javax.swing.JOptionPane;
 import java.util.Locale;
 import javax.swing.*;
-import java.math.*;
 import java.awt.datatransfer.*;
 import java.awt.Toolkit;
 import java.util.ArrayList;
-import java.util.Date;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
@@ -29,6 +27,8 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint; 
 import net.sf.jasperreports.engine.JasperReport; 
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource; 
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 /**
  *
  * @author 1
@@ -135,6 +135,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -614,6 +615,13 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton9.setText("jButton9");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -633,7 +641,9 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(jButton7)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jButton8)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton9)
+                            .addComponent(jButton8))))
                 .addContainerGap(2181, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -649,7 +659,9 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGap(179, 179, 179)
                         .addComponent(jButton4))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
+                        .addGap(46, 46, 46)
+                        .addComponent(jButton9)
+                        .addGap(29, 29, 29)
                         .addComponent(jButton8)
                         .addGap(18, 18, 18)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1019,7 +1031,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
     }   
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-    detectorViewController.setDetectorView();
+    detectorViewController.setDetectorView(file);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
@@ -1072,32 +1084,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2StateChanged
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        DataFromFile source=new DataFromFile("C:\\Users\\1\\Desktop\\ияф\\filter\\data.txt");
-        //создаем объект детектор
-        String Name_base="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Si.txt";
-        String Name_layer="C:\\Users\\1\\Desktop\\ияф\\Файлы пропускания\\1mkm_Al.txt";
-        Detector detector=new Detector(Name_base, Name_layer);
-        final filter []Y = new filter[count_of_filters];
-        //Начальная инициализация экспериментальными токами
-        for (int i=0;i<count_of_filters; i++){
-            Y[i]=new filter(field1[i].getText(),field1[i+count_of_filters].getText(), Double.parseDouble(field2[i].getText()), Double.parseDouble(field2[i+count_of_filters].getText()),Double.parseDouble(field3[i].getText()) );
-            // I0[i]= Y[i].Exp_value;
-            // jTextArea2.append(Double.toString(I0[i]));
-        }
-        double [] b=new double[4];
-        b[0]=Double.parseDouble(jTextField6.getText());
-        b[1]=Double.parseDouble(jTextField7.getText());
-        b[2]=Double.parseDouble(jTextField8.getText());
-        b[3]=Double.parseDouble(jTextField9.getText());
-        double [] c= new double[4];
-        for (int i=0; i<4; i++){
-            c[i]=b[i];
-        }
-        int n=source.SizeOfFile(source.Name_of_file);
-        double [][][] Y1= new double [count_of_filters][n][2];
-        for (int i=0; i<count_of_filters; i++){
-            Y1[i]=current (source, detector, Y[i],c);
-        }
+
         double x_max=0, x_min=0, y_max=0, y_min=0;
         if (jRadioButton2.isSelected()==true){
             x_min=Double.parseDouble(jTextField18.getText());
@@ -1114,25 +1101,8 @@ public class NewJFrame extends javax.swing.JFrame {
         if (jRadioButton8.isSelected()==true)
         y_log=true;
         else y_log=false;
-        try{
-            jPanel6.removeAll();
-            XYLineChart_AWT chart = new XYLineChart_AWT("Графики", "Поглощение", count_of_filters, n,Y1, jPanel6,x_max, x_min, y_max, y_min, x_log, y_log);
-            chart.pack( );
-
-            chart.addWindowListener(new java.awt.event.WindowAdapter() {
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                    if (JOptionPane.showConfirmDialog(chart,
-                        "Are you sure to close this window?", "Really Closing?",
-                        JOptionPane.YES_NO_OPTION,
-                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-                    System.out.println("actionPerformed()");
-
-                }
-
-            }
-        });
-        }catch(Exception e){};
+        GraphicsController graphicsController=new GraphicsController(controller,x_min, x_max, y_min, y_max, x_log, y_log, jPanel6);
+        graphicsController.createGraphics();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -1601,6 +1571,19 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
         jButton2.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jSpinner1StateChanged
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+      String subReportFileName="C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version11\\JavaApplication7\\src\\filterswithoutcoating.jrxml";
+        File subPattern = new File(subReportFileName); 
+        try{
+        //JasperDesign subjasperDesign = JRXmlLoader.load(subPattern); 
+       JasperReport jasperSubReport = JasperCompileManager
+            .compileReport(subReportFileName);
+        }
+        catch(Exception e) { 
+            System.out.println("Во время генерации возникла ошибка: " + e); 
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1652,6 +1635,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -1715,9 +1699,9 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSpinner jSpinner1;
+    protected static javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
+    protected static javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;

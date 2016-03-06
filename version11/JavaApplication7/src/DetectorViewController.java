@@ -1,4 +1,5 @@
 
+import java.io.File;
 import javax.swing.WindowConstants;
 
 /*
@@ -13,13 +14,13 @@ import javax.swing.WindowConstants;
  */
 public class DetectorViewController {
   DetectorFrame detectorView;  
-
+  
     public DetectorFrame getDetectorView() {
         return detectorView;
     }
 
-    public void setDetectorView() {
-       detectorView=new DetectorFrame();
+    public void setDetectorView(File currentDirectory) {
+       detectorView=new DetectorFrame(currentDirectory);
        detectorView.setVisible(true);
        detectorView.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }

@@ -37,16 +37,18 @@ Controller controller;
     
    //String pathForSaving = "C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version11\\JavaApplication7\\src\\TestResult.pdf"; 
   // String pathForPattern = "C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version11\\JavaApplication7\\src\\report1.jasper"; 
-  String pathForPattern = "C:\\Program Files\\Detector\\bundles\\report1.jasper";  
+  String pathForPattern = "C:\\Program Files\\Detector\\bundles\\report111.jasper";  
    //String subReportFileName="C:\\Users\\1\\Documents\\NetBeansProjects\\sppd\\version11\\JavaApplication7\\src\\filters.jasper";
    String subReportFileName="C:\\Program Files\\Detector\\bundles\\filters.jasper";
+   String subReportFileName2="C:\\Program Files\\Detector\\bundles\\filters11.jasper";
     public void create() throws JRException { 
       DataBeanList DataBeanList = new DataBeanList(controller);
       ArrayList<DataBean> dataList = DataBeanList.getDataBeanList();
         ////////////////////////////
         JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(dataList); 
         Map<String, Object> parameters = new HashMap<String, Object>();
-         parameters.put("subreportParameter", subReportFileName);
+        // parameters.put("subreportParameter", subReportFileName2);
+        // parameters.put("subreportParameter", subReportFileName);
          JasperPrint jasperPrint = JasperFillManager.fillReport(pathForPattern,
          parameters, beanColDataSource);
 JRViewer jv = new JRViewer(jasperPrint); 
