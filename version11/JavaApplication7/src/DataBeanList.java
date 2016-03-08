@@ -23,7 +23,7 @@ public class DataBeanList {
      public ArrayList<DataBean> getDataBeanList() {
          //Object sp=NewJFrame.jSpinner1.getValue();
            int nOF=controller.getCountOfFilters();
-     ArrayList <SubReportBean> subBeanList= new ArrayList<SubReportBean>();
+      ArrayList <SubReportBean> subBeanList= new ArrayList<SubReportBean>();
       ArrayList <SubReportBeanWithoutCoating> subBeanListwithoutcoating= new ArrayList<SubReportBeanWithoutCoating>();
     if (controller.isCoating()==0){
      for (int i=0;i<nOF;i++){
@@ -69,7 +69,25 @@ public class DataBeanList {
       dataBean.sethd(controller.getDetector());
       dataBean.sethc(controller.getDetector());
       dataBean.seths(controller.getDetector());
+      dataBean.setdetectorType(controller.getDetector());
+      dataBean.setdetectorBaseSource(controller.getDetector());
+      dataBean.setdetectorContactSource(controller.getDetector());
       dataBean.setsRDataSource(controller.getSource());
+      dataBean.setkPasp(controller.getDetector());
+      dataBean.sethdPasp(controller.getDetector());
+      dataBean.sethcPasp(controller.getDetector());
+      dataBean.sethsPasp(controller.getDetector());
+      double [] lBorder =controller.getLowerBorder();
+      int [] ifBorder=controller.getIfBorder();
+      dataBean.setlk(Double.toString(lBorder[0]), ifBorder[0]);
+      dataBean.setlhd(Double.toString(lBorder[1]),ifBorder[1]);
+      dataBean.setlhc(Double.toString(lBorder[2]),ifBorder[2]);
+      dataBean.setlhs(Double.toString(lBorder[3]),ifBorder[3]);
+      double [] uBorder =controller.getUpperBorder();
+      dataBean.setuk(Double.toString(uBorder[0]),ifBorder[0]);
+      dataBean.setuhd(Double.toString(uBorder[1]),ifBorder[1]);
+      dataBean.setuhc(Double.toString(uBorder[2]),ifBorder[2]);
+      dataBean.setuhs(Double.toString(uBorder[3]),ifBorder[3]);
       dataBean.setFiltersBeanList(subBean);
       dataBean.setFiltersBeanListWithoutCoating(subBean1);
      

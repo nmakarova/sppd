@@ -20,13 +20,19 @@ public class DetectorNew {
   final double DIAMOND_DETECTOR=0.074;
   double [] paspParam;
   double [] realParam;
+  int detectorType;
     public DetectorNew(Material base, Material contact, int detectorType) {
         this.base = base;
         this.contact = contact;
+        this.detectorType=detectorType;
       if (detectorType==0){
           idealDiod=SILICIUM_DETECTOR;
       }
       else idealDiod=DIAMOND_DETECTOR;
+    }
+
+    public int getDetectorType() {
+        return detectorType;
     }
 
     public double getIdealDiod() {

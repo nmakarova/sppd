@@ -95,6 +95,7 @@ public class Callibration {
    }
    public double [] callibrate(){
        double [] realParams=new double [4];
+       if(countOfBorders!=0){
        // начальная точка
         double [] x1=new double[4];
         x1[0]=detector.paspParam[0]; 
@@ -317,7 +318,16 @@ public class Callibration {
      else {realParams[2]=c[0][jj]; jj=jj+1;} 
      if (ifBorder[3]==0){realParams[3]=detector.paspParam[3];}
      else {realParams[3]=c[0][jj]; jj=jj+1;}
+ }
+ else{
+ realParams[0]=detector.paspParam[0];
+ realParams[1]=detector.paspParam[1];
+ realParams[2]=detector.paspParam[2];
+ realParams[3]=detector.paspParam[3];
+           
+       }
      detector.setRealParam(realParams);
+     
      return realParams;
    }
 }

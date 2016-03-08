@@ -5,12 +5,13 @@
  */
 import callibration_model.Controller;
 import callibration_model.DataFromFile;
+import java.awt.Color;
 import java.io.*;
-import javax.swing.JOptionPane;
 import java.util.Locale;
 import javax.swing.*;
 import java.awt.datatransfer.*;
 import java.awt.Toolkit;
+import java.net.URL;
 import java.util.ArrayList;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -20,6 +21,9 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.util.HashMap; 
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import net.sf.jasperreports.swing.JRViewer; 
 import net.sf.jasperreports.engine.JRException; 
 import net.sf.jasperreports.engine.JasperCompileManager; 
@@ -27,8 +31,6 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint; 
 import net.sf.jasperreports.engine.JasperReport; 
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource; 
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
 /**
  *
  * @author 1
@@ -40,6 +42,8 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
+        
+
         jPanel5.setBorder(BorderFactory.createTitledBorder(BorderFactory.createBevelBorder(3), "Паспортные значения"));
         jPanel7.setBorder(BorderFactory.createTitledBorder(BorderFactory.createBevelBorder(3), "Результаты калибровки"));
         jTextField2.setText("1");
@@ -163,20 +167,35 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenu3 = new javax.swing.JMenu();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Detector calibration");
+        setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(1082, 2000));
 
         jTabbedPane1.setAutoscrolls(true);
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(1082, 1900));
 
         jPanel1.setAutoscrolls(true);
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setFocusCycleRoot(true);
         jPanel1.setNextFocusableComponent(jSpinner1);
+        jPanel1.setPreferredSize(new java.awt.Dimension(1082, 1700));
         jPanel1.setRequestFocusEnabled(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -199,16 +218,17 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jPanel4.setAutoscrolls(true);
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel4.setPreferredSize(new java.awt.Dimension(1082, 1500));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 979, Short.MAX_VALUE)
+            .addGap(0, 1057, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 307, Short.MAX_VALUE)
+            .addGap(0, 1500, Short.MAX_VALUE)
         );
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -239,8 +259,8 @@ public class NewJFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 1057, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -253,7 +273,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton6)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(89, 89, 89)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel24)
@@ -261,8 +281,8 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1))
-                            .addComponent(jSeparator1))))
-                .addContainerGap(1914, Short.MAX_VALUE))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,7 +307,7 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(jButton6))))
                 .addGap(45, 45, 45)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(277, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jSpinner1.setModel(new SpinnerNumberModel (2,2,10,1));
@@ -385,6 +405,66 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jTextField2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jTextField2MouseDragged(evt);
+            }
+        });
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField2MouseClicked(evt);
+            }
+        });
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jTextField3MouseDragged(evt);
+            }
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jTextField3MouseMoved(evt);
+            }
+        });
+        jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField3MouseClicked(evt);
+            }
+        });
+
+        jTextField4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jTextField4MouseDragged(evt);
+            }
+        });
+        jTextField4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTextField4MouseEntered(evt);
+            }
+        });
+
+        jTextField5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jTextField5MouseDragged(evt);
+            }
+        });
+        jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField5MouseClicked(evt);
+            }
+        });
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("k");
@@ -644,7 +724,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton9)
                             .addComponent(jButton8))))
-                .addContainerGap(2181, Short.MAX_VALUE))
+                .addContainerGap(355, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -667,7 +747,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(jButton7)))
-                .addContainerGap(356, Short.MAX_VALUE))
+                .addContainerGap(1537, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Расчет", jPanel2);
@@ -892,7 +972,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(2064, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -905,7 +985,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(jButton3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addContainerGap(1394, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("График", jPanel3);
@@ -914,19 +994,62 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem3.setIcon(new javax.swing.ImageIcon("C:\\Users\\1\\Downloads\\add_8091.png")); // NOI18N
+        jMenuItem3.setText("Новый расчет");
+        jMenuItem3.setActionCommand("");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem4.setIcon(new javax.swing.ImageIcon("C:\\Users\\1\\Downloads\\download_manager_6138.png")); // NOI18N
+        jMenuItem4.setText("Загрузить данные");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem5.setIcon(new javax.swing.ImageIcon("C:\\Users\\1\\Downloads\\document-save-as_6181.png")); // NOI18N
+        jMenuItem5.setText("Сохранить данные");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem5);
+
+        jMenuItem6.setIcon(new javax.swing.ImageIcon("C:\\Users\\1\\Downloads\\cog_add_4529.png")); // NOI18N
+        jMenuItem6.setText("Загрузить пример");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem6);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon("C:\\Users\\1\\Downloads\\application_home_4957.png")); // NOI18N
         jMenuItem1.setText("Рабочая папка");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu2.add(jMenuItem1);
+        jMenu2.add(jSeparator2);
 
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
+        jMenu3.setIcon(new javax.swing.ImageIcon("C:\\Users\\1\\Downloads\\color_wheel_8804.png")); // NOI18N
         jMenu3.setText("Детектор");
 
         jRadioButtonMenuItem1.setSelected(true);
@@ -941,7 +1064,24 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem2);
 
-        jMenuBar1.add(jMenu3);
+        jMenu2.add(jMenu3);
+
+        jMenu4.setIcon(new javax.swing.ImageIcon("C:\\Users\\1\\Downloads\\radioactive_3419.png")); // NOI18N
+        jMenu4.setText("Источник");
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Источник");
+        jMenu4.add(jCheckBoxMenuItem1);
+
+        jMenuItem9.setText("Создать источник");
+        jMenu4.add(jMenuItem9);
+
+        jMenu2.add(jMenu4);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu5.setText("Help");
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -949,9 +1089,7 @@ public class NewJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1046, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 36, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1277,22 +1415,54 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        
         //создаем источник тока
         controller.createSource(jTextField1.getText());
-
+        
         //создаем детектор
         String detectorBase=detectorViewController.getBaseName();
         String detectorContact=detectorViewController.getContactName();
         int detectorType=detectorViewController.getDetectorType();
         controller.createDetector(detectorBase, detectorContact, detectorType);
-        
+       
         //считываем паспортные значения
         double [] paspParam=new double [4];
+        try{
         paspParam[0]=Double.parseDouble(jTextField2.getText());
+        }
+        catch(NumberFormatException e)
+        {
+       String s=jTextField2.getText();
+       jTextField2.setForeground(Color.red);
+       jTextField2.setText("! "+s);
+       }
+         try{
         paspParam[1]=Double.parseDouble(jTextField3.getText());
+         }
+         catch(NumberFormatException e)
+        {
+       String s=jTextField3.getText();
+       jTextField3.setForeground(Color.red);
+       jTextField3.setText("! "+s);
+       }
+         try{
         paspParam[2]=Double.parseDouble(jTextField4.getText());
-        paspParam[3]=Double.parseDouble(jTextField5.getText());
+          }
+           catch(NumberFormatException e)
+        {
+       String s=jTextField4.getText();
+       jTextField4.setForeground(Color.red);
+       jTextField4.setText("! "+s);
+       }
+        try{       
+          paspParam[3]=Double.parseDouble(jTextField5.getText());
+        }
+           catch(NumberFormatException e)
+        {
+       String s=jTextField5.getText();
+       jTextField5.setForeground(Color.red);
+       jTextField5.setText("! "+s);
+       }
         controller.setPaspParam(paspParam);
        
         //матрица нижних ограничений
@@ -1372,9 +1542,24 @@ public class NewJFrame extends javax.swing.JFrame {
                 Document document = builder.parse(f);
                 Element root = document.getDocumentElement();
                 // для простоты сразу берем message
+                Element message4 = (Element) root.getElementsByTagName("type_of_detector").item(0);
+                String textContent4 = message4.getTextContent();
+                
+                Element message2 = (Element) root.getElementsByTagName("detector_base_name").item(0);
+                String textContent2 = message2.getTextContent();
+                
+                Element message3 = (Element) root.getElementsByTagName("detector_contact_name").item(0);
+                String textContent3 = message3.getTextContent();
+               
+                 detectorViewController.setDetectorView(file);
+                detectorViewController.setXmlElement(textContent4, textContent2, textContent3,file);
+                Element message5 = (Element) root.getElementsByTagName("sr_data_name").item(0);
+                String textContent5 = message5.getTextContent();
+                jTextField1.setText(textContent5);
                 Element message = (Element) root.getElementsByTagName("count_of_filters").item(0);
                 String textContent = message.getTextContent();
                 jSpinner1.setValue(Integer.parseInt(textContent));
+                
                 Element message1 = (Element) root.getElementsByTagName("type_of_filters").item(0);
                 String textContent1 = message1.getTextContent();
                 int typeOfFilters=0;
@@ -1584,6 +1769,121 @@ public class NewJFrame extends javax.swing.JFrame {
             System.out.println("Во время генерации возникла ошибка: " + e); 
         }
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
+       jTextField2.setForeground(Color.black);
+    }//GEN-LAST:event_jTextField2MouseClicked
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseDragged
+       jTextField2.setForeground(Color.black);
+    }//GEN-LAST:event_jTextField2MouseDragged
+
+    private void jTextField3MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseMoved
+      
+    }//GEN-LAST:event_jTextField3MouseMoved
+
+    private void jTextField4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseEntered
+       
+    }//GEN-LAST:event_jTextField4MouseEntered
+
+    private void jTextField3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseDragged
+        jTextField3.setForeground(Color.black);
+    }//GEN-LAST:event_jTextField3MouseDragged
+
+    private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked
+       jTextField3.setForeground(Color.black);
+    }//GEN-LAST:event_jTextField3MouseClicked
+
+    private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseClicked
+       jTextField4.setForeground(Color.black);       
+    }//GEN-LAST:event_jTextField4MouseClicked
+
+    private void jTextField4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseDragged
+        jTextField4.setForeground(Color.black);
+    }//GEN-LAST:event_jTextField4MouseDragged
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+         
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MouseClicked
+       jTextField5.setForeground(Color.black);
+    }//GEN-LAST:event_jTextField5MouseClicked
+
+    private void jTextField5MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MouseDragged
+        jTextField5.setForeground(Color.black);
+    }//GEN-LAST:event_jTextField5MouseDragged
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        JFileChooser filesave = new JFileChooser();
+        filesave.setCurrentDirectory(file);
+        filesave.addChoosableFileFilter(new  javax.swing.filechooser.FileFilter() {
+    public String getDescription() {
+        return "Xml Documents (*.xml)";
+    }
+   public boolean accept(File f) {
+        if (f.isDirectory()) {
+            return true;
+        } else {
+            return f.getName().toLowerCase().endsWith(".xml");
+        }
+    }
+});
+        int result = filesave.showSaveDialog(jMenuItem5);
+ if(result == JFileChooser.APPROVE_OPTION)
+ {
+  try ( FileWriter fw = new FileWriter(filesave.getSelectedFile()+".xml") ) {
+                fw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+                fw.write("<doc>");
+                fw.write("<type_of_detector>silicium</type_of_detector>");
+                fw.write("<detector_base_name>C:\\\\Users\\\\1\\\\Desktop\\\\ияф\\\\Файлы пропускания\\\\1mkm_Si.txt</detector_base_name> ");
+                fw.write("<detector_contact_name>C:\\\\Users\\\\1\\\\Desktop\\\\ияф\\\\Файлы пропускания\\\\1mkm_Al.txt</detector_contact_name> ");
+                fw.write("<sr_data_name>C:\\\\Users\\\\1\\\\Desktop\\\\ияф\\\\filter\\\\data.txt</sr_data_name> ");
+                fw.write("<type_of_filters>silicium</type_of_filters>");
+                fw.write(" <count_of_filters>2</count_of_filters>");
+                fw.write("<filter id=\"1\">");
+                fw.write("<base>C:\\\\Users\\\\1\\\\Desktop\\\\ияф\\\\Файлы пропускания\\\\1mkm_CH.txt</base>");
+                fw.write("<base_th>1.1</base_th>");
+                fw.write("<cover>C:\\\\Users\\\\1\\\\Desktop\\\\ияф\\\\Файлы пропускания\\\\1mkm_Co.txt</cover>");
+                fw.write("<cover_th>0.17</cover_th>");
+                fw.write("<cur>2.0130</cur>");
+                fw.write("</filter>");
+                fw.write("<filter id=\"2\">");
+                fw.write("<base>C:\\\\Users\\\\1\\\\Desktop\\\\ияф\\\\Файлы пропускания\\\\1mkm_CH.txt</base>");
+                fw.write("<base_th>1.1</base_th>");
+                fw.write("<cover>C:\\\\Users\\\\1\\\\Desktop\\\\ияф\\\\Файлы пропускания\\\\1mkm_Ni.txt</cover>");
+                fw.write("<cover_th>0.29</cover_th>");
+                fw.write("<cur>1.3656</cur>");
+                fw.write("</filter>");
+                fw.write("</doc>");
+            }
+            catch ( IOException e ) {
+                System.out.println("Всё погибло!");
+            }
+        } 
+ 
+       // FileNameExtensionFilter filter = new FileNameExtensionFilter("xml");
+       // filesave.addChoosableFileFilter(filter);
+        //int ret = fileopen.showDialog(null, "Открыть файл");
+       
+        
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1615,7 +1915,17 @@ public class NewJFrame extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new NewJFrame().setVisible(true);
+            NewJFrame f= new NewJFrame();
+            f.setVisible(true);
+            String path = "C:\\Program Files\\Detector\\bundles\\icon.png";
+            File icon = new File(path);
+URL imgURL = NewJFrame.class.getResource(path);
+//ImageIcon icon = new ImageIcon(imgURL);
+            try {
+                f.setIconImage(ImageIO.read(icon));
+            } catch (IOException ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
                 
        );
@@ -1640,6 +1950,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1676,9 +1987,16 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1699,6 +2017,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     protected static javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
     protected static javax.swing.JTextField jTextField1;
@@ -1725,6 +2044,7 @@ public class NewJFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 int count_of_filters; 
 //private javax.swing.JTextField [] field1;
+String detectorBase;
 //массив надписей "1. Подложка" 
 JLabel [] label1;
 //массив текстовых полей для вывода имени файла

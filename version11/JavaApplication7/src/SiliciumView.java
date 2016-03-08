@@ -31,7 +31,6 @@ public class SiliciumView implements FilterView{
    public void createView(int countOfFilers, JPanel viewPanel, File file){
 
        JPanel [] jPan_filter=new JPanel[countOfFilers];
-        
         //массив надписей "1. Подложка"
         JLabel [] label1 = new JLabel[countOfFilers];
         //массив текстовых полей для вывода имени файла
@@ -53,8 +52,9 @@ public class SiliciumView implements FilterView{
         JLabel [] label6 = new JLabel[countOfFilers];
         //Массив надписей "Фильтр 1/2/3/..."
         JLabel [] label7 = new JLabel[countOfFilers];
-        viewPanel.setSize(300, 300);
-        viewPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createBevelBorder(3)));
+  
+       // viewPanel.setSize(viewPanel.getPreferredSize());
+        //viewPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder()));
         viewPanel.setLayout(new BoxLayout(viewPanel, BoxLayout.Y_AXIS));
 for (int i=0; i<countOfFilers; i++){
             //создаем новые экземпляры
@@ -76,8 +76,8 @@ for (int i=0; i<countOfFilers; i++){
             label6[i] = new JLabel("мкА/мА");
             label7[i] =new JLabel("Фильтр № ".concat(Integer.toString(i+1)));
             label7[i].setFont(new Font("Verdana", Font.BOLD, 13));
-            jPan_filter[i].setSize(250, 250);
-            jPan_filter[i].setBorder(BorderFactory.createLineBorder(Color.black));
+            jPan_filter[i].setSize(300, 300);
+            jPan_filter[i].setBorder(BorderFactory.createEtchedBorder());
                 ////////
             button1[i].addActionListener(new GetNameOfFile (field1[i], button1[i], file));
             button1[i+countOfFilers].addActionListener(new GetNameOfFile (field1[i+countOfFilers], button1[i+countOfFilers], file));
@@ -115,10 +115,11 @@ for (int i=0; i<countOfFilers; i++){
                         .addComponent(field3[i])
                         .addComponent(label6[i]))));
             //Выравниваем размер полей ввода
+           
             layout.linkSize(SwingConstants.HORIZONTAL, field1[i], field1[i+countOfFilers], field3[i]);
             layout.linkSize(SwingConstants.VERTICAL, field1[i], field1[i+countOfFilers], field3[i]);
             layout.linkSize(SwingConstants.HORIZONTAL,field1[i], field2[i], field2[i+countOfFilers]);
-
+            layout.linkSize(SwingConstants.VERTICAL, field1[i], field2[i], field2[i+countOfFilers]);
             //вертикальная группа панели фильтров
             layout.setVerticalGroup(layout.createSequentialGroup()
                 .addComponent(label7[i])
@@ -142,6 +143,7 @@ for (int i=0; i<countOfFilers; i++){
                     .addComponent(label3[i])
                     .addComponent(field2[i+countOfFilers])
                     .addComponent(label3[i+countOfFilers])));
+     
             viewPanel.add(jPan_filter[i]);
         }
    }

@@ -1,6 +1,7 @@
 
 
 import callibration_model.*;
+import java.awt.event.ActionEvent;
 import java.io.File;
 import javax.swing.JFileChooser;
 
@@ -215,18 +216,30 @@ int returnVal = fileopen.showOpenDialog(jButton2);
           jTextField2.setText(name_of_file);
     }
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+private void getDetectorData(){
         baseName=getBaseName();
         contactName=getContactName();
-        detectorType=getDetectorType();
+        detectorType=getDetectorType(); 
+        dispose();
+}
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       getDetectorData(); 
+      
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 public DetectorNew createDetector(){
    
     DetectorNew detector=new DetectorNew(new Material(baseName),new Material(contactName),detectorType);
     return detector;
 }
-    /**
+public void setXmlElement(String type, String baseName, String contactName)
+{
+    jTextField1.setText(baseName);
+    jTextField2.setText(contactName);
+    jRadioButton1.isSelected();
+    getDetectorData();
+}  
+/**
      * @param args the command line arguments
      * @param currentDirectory the command line arguments
      */
@@ -257,8 +270,8 @@ public DetectorNew createDetector(){
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DetectorFrame(currentDirectory).setVisible(true);
-               
+               DetectorFrame f= new DetectorFrame(currentDirectory);
+                f.setVisible(true);
 
             }
         });

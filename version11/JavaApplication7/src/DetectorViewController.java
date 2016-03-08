@@ -36,4 +36,8 @@ public class DetectorViewController {
       String contactName=detectorView.getContactName();
       return contactName;
   }
+  public void setXmlElement(String type, String baseName, String contactName,File currentDirectory){
+     // detectorView=new DetectorFrame(currentDirectory);
+      detectorView.setXmlElement(type, baseName, contactName);
+   }
 }

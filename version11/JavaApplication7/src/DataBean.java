@@ -18,9 +18,208 @@ public class DataBean {
     private String hc; 
     private String hd; 
     private String hs; 
+    private String kPasp; 
+    private String hcPasp; 
+    private String hdPasp; 
+    private String hsPasp; 
+    private String lk; 
+    private String lhc; 
+    private String lhd; 
+    private String lhs; 
+    private String uk; 
+    private String uhc; 
+    private String uhd; 
+    private String uhs; 
+    private String detectorType; 
+    private String detectorBaseSource; 
+    private String detectorContactSource; 
     private List<SubReportBean> filtersBeanList;
     private List<SubReportBeanWithoutCoating> filtersBeanList1;
     private String sRDataSource; 
+
+    public String getDetectorType() {
+        return detectorType;
+    }
+
+    public void setdetectorType(DetectorNew detector) {
+       int d=detector.getDetectorType();
+       if (d==0){
+       detectorType="Silicium" ;   
+       }
+       else{
+           detectorType="Diamond";
+       }
+    }
+
+    public String getDetectorBaseSource() {
+        return detectorBaseSource;
+    }
+
+    public void setdetectorBaseSource(DetectorNew detector) {
+      detectorBaseSource=detector.getBase().Name_of_file;
+    }
+
+    public String getDetectorContactSource() {
+        return detectorContactSource;
+    }
+
+    public void setdetectorContactSource(DetectorNew detector) {
+        detectorContactSource=detector.getContact().Name_of_file;
+    }
+
+    public String getLk() {
+        return lk;
+    }
+
+    public void setlk(String lk, int i) {
+        if (i==1){
+        lk=lk.concat("<=");}
+        else{
+            lk="";
+        }
+        this.lk = lk;
+    }
+
+    public String getLhc() {
+        return lhc;
+    }
+
+    public void setlhc(String lhc,int i) {
+       if (i==1){
+        lhc=lhc.concat("<=");
+       }
+        else{
+            lhc="";
+        }
+        this.lhc = lhc;
+    }
+
+    public String getLhd() {
+        return lhd;
+    }
+
+    public void setlhd(String lhd,int i) {
+        if (i==1){
+        lhd=lhd.concat("<=");
+       }
+        else{
+            lhd="";
+        }
+        
+        this.lhd = lhd;
+    }
+
+    public String getLhs() {
+        return lhs;
+    }
+
+    public void setlhs(String lhs,int i) {
+       if (i==1){
+        lhs=lhs.concat("<=");
+       }
+        else{
+            lhs="";
+        }
+       
+        this.lhs = lhs;
+    }
+
+    public String getUk() {
+        return uk;
+    }
+
+    public void setuk(String uk,int i) {
+       if (i==1){
+         uk="<="+uk;
+       }
+        else{
+            uk="";
+        }
+       
+        this.uk = uk;
+    }
+
+    public String getUhc() {
+        return uhc;
+    }
+
+    public void setuhc(String uhc,int i) {
+        if (i==1){
+         uhc="<="+uhc;
+       }
+        else{
+            uhc="";
+        }
+        
+        this.uhc = uhc;
+    }
+
+    public String getUhd() {
+        return uhd;
+    }
+
+    public void setuhd(String uhd,int i) {
+        if (i==1){
+          uhd="<="+uhd;
+       }
+        else{
+            uhd="";
+        }
+       
+        this.uhd = uhd;
+    }
+
+    public String getUhs() {
+        return uhs;
+    }
+
+    public void setuhs(String uhs,int i) {
+       if (i==1){
+           uhs="<="+uhs;
+       }
+        else{
+            uhs="";
+        }
+       
+        this.uhs = uhs;
+    }
+
+    public String getkPasp() {
+        return kPasp;
+    }
+
+    public void setkPasp(DetectorNew detector) {
+      double [] paspparam=detector.getRealParam();
+      kPasp=Double.toString(paspparam[0]);
+    }
+
+    public String getHcPasp() {
+        return hcPasp;
+    }
+
+    public void sethcPasp(DetectorNew detector) {
+      double [] paspparam=detector.getRealParam();
+      hcPasp=Double.toString(paspparam[2]);
+    }
+
+    public String getHdPasp() {
+        return hdPasp;
+    }
+
+    public void sethdPasp(DetectorNew detector) {
+      double [] paspparam=detector.getRealParam();
+      hdPasp=Double.toString(paspparam[1]);
+    }
+
+    public String getHsPasp() {
+        return hsPasp;
+    }
+
+    public void sethsPasp(DetectorNew detector) {
+      double [] paspparam=detector.getRealParam();
+      hsPasp=Double.toString(paspparam[3]);
+    }
+    
     public String getk() { 
        
         return k; 
@@ -36,7 +235,7 @@ public class DataBean {
         return hc; 
     } 
     public void sethc(DetectorNew detector) { 
-        double [] realparam=detector.getRealParam();
+      double [] realparam=detector.getRealParam();
       hc=Double.toString(realparam[2]);
     } 
     

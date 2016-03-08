@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.0.0.final using JasperReports Library version 6.0.0  -->
+<!-- 2016-03-04T17:32:06 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="filters" pageWidth="550" pageHeight="400" columnWidth="550" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isTitleNewPage="true" uuid="d36c720e-d284-4712-8699-bbde1b9924b1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="fNamebase" class="java.lang.String"/>
+	<field name="expvalue" class="java.lang.String"/>
+	<field name="thickbase" class="java.lang.String"/>
+	<field name="countOfFilters" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="5" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="5" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="10" width="549" height="30" backcolor="#FFFFCC" uuid="9edf2a73-b5ee-4a33-8d38-cd75d7c08b6d"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Filters]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="195" y="50" width="179" height="20" uuid="641ada46-e5b9-42b2-9d65-de8f38dae1bb"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["number of filters " +$F{countOfFilters}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="150" splitType="Stretch">
+			<textField>
+				<reportElement x="119" y="42" width="303" height="20" uuid="5439d2bd-8536-4688-88e1-31373c4e97e0"/>
+				<textFieldExpression><![CDATA[$F{fNamebase}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="38" y="130" width="100" height="20" uuid="7d124659-b50f-4f96-8b62-41f03c153236"/>
+				<textFieldExpression><![CDATA[$F{expvalue}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="38" y="42" width="63" height="20" uuid="38605252-6ef2-469d-a466-bb265a9d0b85"/>
+				<textFieldExpression><![CDATA[$F{thickbase}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="10" width="100" height="32" uuid="4e99411e-6224-42cc-96e9-b4455e27fa93"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[the mass thickness of base layer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="119" y="10" width="243" height="32" uuid="f0636763-b2ae-4efd-869c-2d89a769cee2"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[path of base layer's data file]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="114" width="243" height="16" uuid="868a8065-738b-4fe0-955b-a7bc9c55f825"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[the detector current]]></text>
+			</staticText>
+			<line direction="BottomUp">
+				<reportElement x="-4" y="3" width="554" height="3" backcolor="#000000" uuid="488468a5-3b6c-42c2-a4d6-cfaa9abd9424"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="143" width="549" height="2" backcolor="#000000" uuid="abed8885-f8f7-45c4-8435-eb37dec4472c"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="5" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="5" splitType="Stretch"/>
+	</summary>
+</jasperReport>
